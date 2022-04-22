@@ -1,2 +1,2 @@
 # APEX
-A habit tracking app for gamer
+## A habit tracking app for E-Sport Athletes
