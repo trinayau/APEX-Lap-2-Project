@@ -40,4 +40,35 @@ async function destroy (req, res) {
     };
 }
 
-module.exports = { index, show, create, destroy }
+async function update (req, res) {
+    try {
+        const object = await Model.getById(req.params.id);
+        const resp = await object.update();
+        res.status(204).json(object)
+    } catch (err) {
+        console.log(err)
+        res.status(422).json({err})
+    }
+}
+
+async function addUser (req, res) {
+    try {
+        const object = await Model.addUser(req.body);
+        res.status(201).json(object)
+    } catch (err) {
+        console.log(err)
+        res.status(422).json({err})
+    }
+}
+
+async function getUser (req, res) {
+    try {
+        const object = await Model.getUser(req.body);
+        res.status(201).json(object)
+    } catch (err) {
+        console.log(err)
+        res.status(422).json({err})
+    }
+}
+
+module.exports = { index, show, create, destroy, update, addUser, getUser}
