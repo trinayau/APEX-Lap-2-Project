@@ -115,6 +115,60 @@ body.active {overflow-y: hidden;}
 
 /* Reused Style*/
 .container { padding-inline: 15px; }
+.h1 {
+    color: var(--white);
+    font-family: var(--ff-refault);
+    font-size: var(--fs-1);
+    font-weight: var(--fw-400);
+    text-transform: uppercase;
+  }
+  
+  .h2 {
+    font-size: var(--fs-2);
+    color: var(--white);
+    line-height: 1.2;
+    text-transform: uppercase;
+    font-family: var(--ff-oswald);
+  }
+
+  .h3 {
+    font-family: var(--ff-oswald);
+    font-size: var(--fs-2);
+    text-transform: uppercase;
+    line-height: 1.2;
+  }
+  
+  .btn {
+    color: var(--white);
+    font-family: var(--ff-oswald);
+    font-size: var(--fs-6);
+    font-weight: var(--fw-500);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    padding: 13px 34px;
+    clip-path: var(--polygon-1);
+    transition: var(--transition-1);
+  }
+  
+  .btn-primary { background: var(--orange); }
+  
+  .btn-primary:is(:hover, :focus) { background: var(--raisin-black-1); }
+  
+  .btn-secondary {
+    background: var(--white);
+    color: var(--orange);
+  }
+
+  .btn-secondary:is(:hover, :focus) {
+    background: var(--raisin-black-1);
+    color: var(--white);
+  }
+  
+
 /* Header */
 .header {
     position: fixed;
