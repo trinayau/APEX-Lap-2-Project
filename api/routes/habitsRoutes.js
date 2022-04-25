@@ -11,7 +11,7 @@ const objectController = require('../controllers/habitsController')
 router.route('/')
     .get(objectController.index)
     .post(objectController.create)
-
+    
 router.route(':/id')
     .get(objectController.show)
     .delete(objectController.destroy)
