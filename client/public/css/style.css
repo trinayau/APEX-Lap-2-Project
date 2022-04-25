@@ -10,7 +10,8 @@
     --light-gray: hsl(0, 0%, 80%);
     --platinum: hsl(0, 4%, 91%);
     --xiketic: hsl(275, 24%, 10%);
-    --orange: hsl(31, 100%, 51%);
+    --orange: #03AABD;
+    --purple: #BA69DE;
     --white: hsl(0, 0%, 100%);
     --onyx: hsl(240, 5%, 26%);
 
@@ -95,7 +96,7 @@ body.active {overflow-y: hidden;}
 ::-webkit-scrollbar {width: 8px;}
 ::-webkit-scrollbar-track {background: var(--raisin-black-2);}
 ::-webkit-scrollbar-thumb{
-    background: var(--orange);
+    background: #03AABD;
     border-radius: 10px;
 }
 
@@ -154,9 +155,9 @@ body.active {overflow-y: hidden;}
     transition: var(--transition-1);
   }
   
-  .btn-primary { background: var(--orange); }
+  .btn-primary { background: var(--raisin-black-1); }
   
-  .btn-primary:is(:hover, :focus) { background: var(--raisin-black-1); }
+  .btn-primary:is(:hover, :focus) { background: var(--orange); }
   
   .btn-secondary {
     background: var(--white);
@@ -167,6 +168,38 @@ body.active {overflow-y: hidden;}
     background: var(--raisin-black-1);
     color: var(--white);
   }
+
+  .btn-link:is(:hover, :focus) { color: var(--orange); }
+
+.has-scrollbar::-webkit-scrollbar { height: 6px; }
+
+.has-scrollbar::-webkit-scrollbar-button { width: 40px; }
+
+.section-title {
+  position: relative;
+  text-align: center;
+  margin-bottom: 80px;
+}
+
+.section-title::before,
+.section-title::after {
+  content: "";
+  position: absolute;
+  bottom: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 5px;
+  width: 120px;
+  background: var(--orange);
+  border-radius: 0 0 5px 5px;
+}
+
+.section-title::before {
+  bottom: -23px;
+  height: 4px;
+  width: 30px;
+}
+
   
 
 /* Header */
@@ -277,7 +310,7 @@ body.active {overflow-y: hidden;}
 
   /* HERO */
   .hero {
-    background: url("../images/hero-banner.jpg") no-repeat;
+    background: url("../images/hero-banner-v4.jpg") no-repeat;
     background-size: cover;
     background-position: top center;
     margin-top: 90px;
@@ -289,6 +322,26 @@ body.active {overflow-y: hidden;}
     align-items: center;
     text-align: center;
   }
+
+  .hero::after {
+    margin-top: 90px;
+    content: '';
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background-image: linear-gradient(to bottom right,#002f4b,#e046ff);
+        opacity: .6; 
+        height: 100vh;
+}
+
+.hero::after {
+    z-index: 1;
+}
+.hero > * {
+    z-index: 100;
+}
   
   .hero-subtitle {
     color: var(--white);
@@ -299,6 +352,7 @@ body.active {overflow-y: hidden;}
     letter-spacing: 12px;
     text-shadow: 0 7px hsla(0, 0%, 0%, 0.4);
     margin-bottom: 15px;
+    z-index: 5;
   }
   
   .hero-title { margin-bottom: 10px; }
@@ -313,6 +367,65 @@ body.active {overflow-y: hidden;}
   .hero .btn-primary ion-icon { font-size: 25px; }
   
   
+/* About */
+.section-wrapper {
+    background: url("../images/section-wrapper-bg.jpg") no-repeat;
+    background-size: cover;
+    background-position: center;
+  }
+
+.about-banner { margin-bottom: 40px; }
+
+.about-img { width: 100%; }
+
+.character { display: none; }
+
+.about-content {
+  background: var(--raisin-black-1);
+  color: var(--white);
+  padding: 40px 20px;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px hsla(0, 0%, 0%, 0.2);
+}
+
+.about-subtitle {
+    color: var(--orange);
+    font-family: var(--ff-oswald);
+    font-size: var(--fs-8);
+    font-weight: var(--fw-500);
+    text-transform: uppercase;
+    margin-bottom: 15px;
+  }
   
+.about-title {
+    font-family: var(--ff-oswald);
+    font-size: var(--fs-2);
+    line-height: 1.2;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
   
-  
+.about-title strong { color: var(--orange); }
+
+.about-text,
+.about-bottom-text {
+  color: var(--light-gray);
+  font-size: var(--fs-9);
+  line-height: 1.8;
+  letter-spacing: 0.5px;
+}
+
+.about-text { margin-bottom: 20px; }
+
+.about-bottom-text {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.about-bottom-text ion-icon {
+  color: var(--orange);
+  font-size: 25px;
+  --ionicon-stroke-width: 45px;
+}
