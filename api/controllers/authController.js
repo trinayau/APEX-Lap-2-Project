@@ -15,6 +15,7 @@ async function addUser (req, res) {
     try {
         // const object = await Model.addUser(req.body);
         // res.status(201).json(object)
+        console.log(req.body)
         res.send('new user')
     } catch (err) {
         console.log(err)
@@ -38,6 +39,8 @@ async function loginUser (req, res) {
     try {
         // const object = await Model.addUser(req.body);
         // res.status(201).json(object)
+        const {email, password} = req.body;
+        console.log(email, password);
         res.send('user login')
     } catch (err) {
         console.log(err)
