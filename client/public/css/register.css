@@ -314,5 +314,119 @@ body.active {overflow-y: hidden;}
   
   
   
+/********************************************************************/
+/**register**/
+/**********************************************************************/
+
+  @import url("https://fonts.googleapis.com/css2?family=Encode+Sans+SC:wght@100;400;500;600;700&display=swap");
+
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
   
+  body {
+    display: grid;
+    place-items: center;
+    width: 100vw;
+    height: 100vh;
+    font-family: "Encode Sans SC", sans-serif;
+  }
+  
+  .main {
+    width: 500px;
+    max-width: 90%;
+    text-align: center;
+    background-color: white;
+    padding: 25px 20px;
+    border-radius: 10px;
+  }
+  
+  .main > h1 {
+    font-size: 30px;
+    color: black;
+    margin: 0 0 30px 0;
+  }
+  
+  .main > form > input {
+    width: 95%;
+    padding: 15px;
+    background-color: #ccc;
+    color: gray;
+    border: 0;
+    margin: 10px 5px;
+    border-radius: 8px;
+    text-align: center;
+  }
+  
+  .main > form > button {
+    background-color: #03AABD;
+    padding: 15px;
+    width: 95%;
+    border: none;
+    color: white;
+    margin-top: 20px;
+    margin-left: 5px;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+  
+  .main > form > input:focus,
+  .main > form > button:focus {
+    outline: none;
+  }
+
+  /* HERO */
+  .hero {
+    background: url("../images/hero-banner.jpg") no-repeat;
+    background-size: cover;
+    background-position: top center;
+    margin-top: 90px;
+    padding: var(--section-padding) 0;
+    height: 100vh;
+    width: 100%;
+    max-height: 1000px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+
+
+  #requirements {
+    font-family: "Roboto", arial, sans-serif;
+    display: none;
+    flex-direction: column;
+    background: #fefefe;
+    color: #000;
+    position: relative;
+    margin: 5px auto;
+    padding: 5px;
+    margin-top: 10px;
+    width: 300px;
+    text-align: center;
+    border-radius: 10px 10px 10px 10px;
+  }
+  
+  #requirements h3 {
+    font-size: 20px;
+    margin: 10px auto;
+  }
+  
+  #requirements p {
+    padding: 5px auto;
+    font-size: 15px;
+    margin: 5px auto;
+  }
+  
+  /* Green text color when the requirements are right */
+  .valid {
+    color: green;
+  }
+  
+  /* Orange text color when the requirements are wrong */
+  .invalid {
+    color: rgb(236, 111, 102);
+  }
   
