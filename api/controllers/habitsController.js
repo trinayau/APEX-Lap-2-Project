@@ -2,8 +2,9 @@ const Model = require('../models/Model');
 
 async function index (req, res) {
     try {
-        const object = await Model.all;
-        res.status(200).json(object)
+        //const object = await Model.all;
+        //res.status(200).json(object)
+        res.send('APEX HABITS');
     } catch (err) {
         res.status(500).json({err})
     }
