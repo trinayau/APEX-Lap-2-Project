@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <!-- favicon icon-->
+  <link rel="shortcut icon" href="./public/images/favicon.svg" type="img/svg+xml">
+  <!--custom css link-->
+  <link rel="stylesheet" href="./public/css/register.css">
+  <!--google font link-->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&family=Poppins:wght@400;500;700&display=swap"
+    rel="stylesheet">
+</head>
+
+<body bgcolor="white">
+
+  <!--**********************************************************************-->
+  <!--Nav bar-->
+  <!--**********************************************************************-->
+
+  <!-- Header -->
+  <header class="header">
+    <!-- Overlay -->
+    <div class="overlay" data-overlay></div>
+
+    <div class="container">
+
+      <a href="#" class="logo">
+        <img src="./public/images/letter-a-svgrepo-com.svg" alt="APEX.IO Logo" height="55px">
+      </a>
+      <button class="nav-open-btn" data-nav-open-btn>
+        <ion-icon name="menu-outline"></ion-icon>
+      </button>
+
+      <nav class="navbar" data-nav>
+        <div class="navbar-top">
+          <a href="#" class="logo">
+            <img src="./public/images/letter-a-svgrepo-com.svg" alt="APEX.IO Logo" height="55px">
+          </a>
+          <button class="nav-close-btn" data-nav-close-btn>
+            <ion-icon name="close-outline"></ion-icon>
+          </button>
+        </div>
+
+        <ul class="navbar-list">
+          <li>
+            <a href="#hero" class="navbar-link">Home</a>
+          </li>
+
+          <li>
+            <a href="#about" class="navbar-link">About</a>
+          </li>
+
+          <li>
+            <a href="#habits" class="navbar-link">Habits</a>
+          </li>
+
+          <li>
+            <a href="#tournament" class="navbar-link">Tournament</a>
+          </li>
+
+          <li>
+            <a href="#contact" class="navbar-link">Contact</a>
+          </li>
+        </ul>
+
+        <ul class="nav-social-list">
+
+          <li>
+            <a href="#" class="social-link">
+              <ion-icon name="logo-twitter"></ion-icon>
+            </a>
+          </li>
+
+          <li>
+            <a href="#" class="social-link">
+              <ion-icon name="logo-instagram"></ion-icon>
+            </a>
+          </li>
+
+          <li>
+            <a href="#" class="social-link">
+              <ion-icon name="logo-github"></ion-icon>
+            </a>
+          </li>
+
+          <li>
+            <a href="#" class="social-link">
+              <ion-icon name="logo-youtube"></ion-icon>
+            </a>
+          </li>
+
+        </ul>
+
+        <div class="header-actions">
+
+          <button class="search">
+            <ion-icon name="search-outline"></ion-icon>
+          </button>
+
+          <button class="btn-sign_in">
+
+            <div class="icon-box">
+              <ion-icon name="log-in-outline"></ion-icon>
+            </div>
+
+            <span>Log-in</span>
+
+          </button>
+
+        </div>
+      </nav>
+
+    </div>
+  </header>
+  <!--**********************************************************************-->
+  <!--Nav bar-->
+  <!--**********************************************************************-->
+
+    <!--**********************************************************************-->
+    <!--Login card-->
+    <!--**********************************************************************-->
+  <div class="hero" id="hero">
+    <div class="main">
+      <h1>SIGN UP TO BETTER YOURSELF!</h1>
+      
+      <form action="/login" method="POST">
+        <input type="name" name="name" placeholder="My Name" />
+        <input type="email" name="email" placeholder="example@email.com" />
+        <input id="password" type="password" name="password" placeholder="* * * * * *" />
+        <button>SIGN IN</button>
+        <div id="requirements">
+        <h3>password must contain:</h3>
+        <p id="letter" class="invalid">A lowercase letter</p>
+        <p id="capital" class="invalid">An uppercase letter</p>
+        <p id="number" class="invalid">At least two numbers</p>
+        <p id="length" class="invalid">Over 5 characters long</p>
+      </div>
+      </form>
+      
+    </div>
+  </div>
+
+  <!--**********************************************************************-->
+  <!--Login card-->
+  <!--**********************************************************************-->
+  <!--custom js-->
+  <script src="./public/javascript/register.js"></script>
+  <!--ionicon link-->
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+</body>
+
+
+
+</html>

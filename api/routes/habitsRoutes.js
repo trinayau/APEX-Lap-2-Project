@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const objectController = require('../controllers/controller')
+const objectController = require('../controllers/habitsController')
 
 
 // router.get('/', objectController.index)
@@ -18,11 +18,11 @@ router.route(':/id')
     .put(objectController.update) //update not create
 
 
-router.route('/users')
-    .get(objectController.index)
-    .post(objectController.addUser)
+// router.route('/users')
+//     .get(objectController.index)
+//     .post(objectController.addUser)
 
-router.route('/users/login')
-    .post(objectController.getUser)
+// router.route('/users/login')
+//     .post(objectController.getUser)
 
 module.exports = router;
