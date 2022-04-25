@@ -1,4 +1,5 @@
 const Model = require('../models/Model');
+const User = require('../models/User');
 
 //signup get
 async function getSignup (req, res) {
@@ -11,15 +12,15 @@ async function getSignup (req, res) {
 }
 
 //signup post
-async function addUser (req, res) {
+async function addUser (req, res) {   
+    const { username, password } = req.body;
     try {
-        // const object = await Model.addUser(req.body);
-        // res.status(201).json(object)
-        console.log(req.body)
-        res.send('new user')
-    } catch (err) {
-        console.log(err)
-        res.status(422).json({err})
+        const user = await User.create({ username, password });
+        res.status(201).json(user);
+    }
+    catch(err) {
+        console.log(err);
+        res.status(422).send('error, user not created');
     }
 }
 
