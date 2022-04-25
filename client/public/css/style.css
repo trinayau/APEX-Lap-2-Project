@@ -222,6 +222,10 @@ body.active {overflow-y: hidden;}
 
   .header-actions { display: none; }
 
+  .active {
+      z-index: 10;
+  }
+
   .nav-open-btn {
     color: var(--white);
     font-size: 40px;
@@ -240,7 +244,7 @@ body.active {overflow-y: hidden;}
     height: 100%;
     box-shadow: 0 2px 8px hsla(0, 0%, 0%, 0.5);
     visibility: hidden;
-    z-index: 2;
+    z-index: 10;
     transition: var(--transition-2);
   }
 
@@ -340,7 +344,7 @@ body.active {overflow-y: hidden;}
     z-index: 1;
 }
 .hero > * {
-    z-index: 100;
+    z-index: 3;
 }
   
   .hero-subtitle {
@@ -352,7 +356,6 @@ body.active {overflow-y: hidden;}
     letter-spacing: 12px;
     text-shadow: 0 7px hsla(0, 0%, 0%, 0.4);
     margin-bottom: 15px;
-    z-index: 5;
   }
   
   .hero-title { margin-bottom: 10px; }
