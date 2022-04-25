@@ -87,25 +87,25 @@ moudle.exports = class ClassExample {
         });
     };
 
-    static async getUser(objectData){
-        return new Promise (async (resolve, reject) => {
-            try {
-                const user = this.getById(user => user.name === objectData.body.name)
-                if (user == null) {
-                    return error('user could not be found')
-                }
-                try {
-                    if(bcrypt.compare(objectData.body.password, user.password)){
-                        console.log('woo');
-                    } else {
-                        console.log('not allowed')
-                    }
-                } catch {
-                    return error('user could not be found')
-                }
-            } catch (err) {
-                reject('user not found');
-            }
-        });
-    };
+    // static async getUser(objectData){
+    //     return new Promise (async (resolve, reject) => {
+    //         try {
+    //             const user = this.getById(user => user.name === objectData.body.name)
+    //             if (user == null) {
+    //                 return error('user could not be found')
+    //             }
+    //             try {
+    //                 if(bcrypt.compare(objectData.body.password, user.password)){
+    //                     console.log('woo');
+    //                 } else {
+    //                     console.log('not allowed')
+    //                 }
+    //             } catch {
+    //                 return error('user could not be found')
+    //             }
+    //         } catch (err) {
+    //             reject('user not found');
+    //         }
+    //     });
+    // };
 }
