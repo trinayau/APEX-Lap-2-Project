@@ -1,10 +1,16 @@
 'use strict';
 
-/** element toggle function */
+/**
+ * element toggle function
+ */
 
 const elemToggleFunc = function (elem) { elem.classList.toggle("active"); }
 
-/* navbar variables - attribute selectors */
+
+
+/**
+ * navbar variables
+ */
 
 const navbar = document.querySelector("[data-nav]");
 const navOpenBtn = document.querySelector("[data-nav-open-btn]");
@@ -40,5 +46,3 @@ window.addEventListener("scroll", function () {
   }
 
 })
-
-
