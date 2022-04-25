@@ -4,11 +4,14 @@ const User = require('../models/User');
 //handle errors
 const handleErrors = (err) => {
     console.log(err.message, err.code);
-    let errors = {username: '', password: ''};
+    let errors = {username: '', password: '', email: ''};
 
     //duplicate error codename
-    if(err.code === 11000){
+    if(err.code === 11000 && err.message.includes('username')){
         errors.username = 'That username is already in use'
+        return errors;
+    } else if(err.code === 11000 && err.message.includes('email')){
+        errors.username = 'That email is already in use'
         return errors;
     }
 
@@ -33,9 +36,9 @@ async function getSignup (req, res) {
 
 //signup post
 async function addUser (req, res) {   
-    const { username, password } = req.body;
+    const { username, password, email } = req.body;
     try {
-        const user = await User.create({ username, password });
+        const user = await User.create({ username, password, email });
         res.status(201).json(user);
     }
     catch(err) {

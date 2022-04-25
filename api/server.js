@@ -12,7 +12,8 @@ app.use(cors());
 app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.get('/', (req, res) => res.send('APEX'))
+app.get('/', (req, res) => res.render('index'))
+
 
 app.use('/habits', habitRoutes)
 
