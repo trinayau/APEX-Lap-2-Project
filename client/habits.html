@@ -75,10 +75,15 @@
             </div>
         </div>
 
-        <div class="container ">
+        <div class="container">
             <h2>HABITS</h2>
             <p></p>
-            <form class="add-habit d-flex justify-content-center">
+            <form class="add-habit">
+                <div class="checkboxes">
+                    <label><input type="checkbox"> <span>Apex Legends</span></label>
+                    <label><input type="checkbox"> <span>Fortnite</span></label>
+                    <label><input type="checkbox"> <span>CS:GO</span></label>
+                  </div>
               <input
                 class="habit"
                 type="text"
@@ -94,11 +99,10 @@
                 required
               />
               <input type="submit" value="+ Add Habit" />
+              
             </form>
-
-             <br>
-
-            <ul class="habits d-flex justify-content-center">
+      
+            <ul class="habits">
               <li>Loading...</li>
             </ul>
           </div>

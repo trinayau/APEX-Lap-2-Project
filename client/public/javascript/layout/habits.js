@@ -6,12 +6,10 @@ function addHabit(e) {
   e.preventDefault();
   const text = this.querySelector("[name=habit]").value;
   const totalCounts = +this.querySelector("[name=reps]").value;
-  const timeframe = this.querySelector("[name=timeframe]").value;
   const habit = {
     text: text,
     reps: 0,
     totalCounts: totalCounts,
-    timeframe: timeframe,
     completed: false,
   };
 
@@ -23,19 +21,15 @@ function addHabit(e) {
 }
 
 function listHabits(habit = [], habitsList) {
-  habitsList.innerHTML = habits
-    .map((habit, i) => {
+  habitsList.innerHTML = habits.map((habit, i) => {
       return `
             <li>
             <input type="checkbox" data-index=${i} id="habit${i}" ${
         habit.completed ? "checked" : ""
       } />
-            <label for="habit${i}"><span>${habit.reps}/${habit.totalCounts} ${
-        habit.timeframe
-      }</span> ${habit.text}</label>
+            <label for="habit${i}"><span>${habit.reps}/${habit.totalCounts}</span> ${habit.text}</label>
         <button class="delete" data-index=${i} id="delete${i}">Delete</button>
-        </li>
-        `;
+        </li>`;
     })
     .join("");
 }
