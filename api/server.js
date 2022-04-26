@@ -13,7 +13,7 @@ app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.get('/', (req, res) => res.render('index'))
-
+app.get('/hero', (req, res) => res.render('herocarousel'))
 
 app.use('/habits', habitRoutes)
 
