@@ -1,4 +1,4 @@
-const Model = require('../models/Model');
+const Habit = require('../models/User');
 
 async function index (req, res) {
     try {
@@ -52,24 +52,4 @@ async function update (req, res) {
     }
 }
 
-async function addUser (req, res) {
-    try {
-        const object = await Model.addUser(req.body);
-        res.status(201).json(object)
-    } catch (err) {
-        console.log(err)
-        res.status(422).json({err})
-    }
-}
-
-async function getUser (req, res) {
-    try {
-        const object = await Model.getUser(req.body);
-        res.status(201).json(object)
-    } catch (err) {
-        console.log(err)
-        res.status(422).json({err})
-    }
-}
-
-module.exports = { index, show, create, destroy, update, addUser, getUser}
+module.exports = { index, show, create, destroy, update}
