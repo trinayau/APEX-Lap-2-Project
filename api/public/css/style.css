@@ -1,3 +1,4 @@
+
 /* Custom properties*/
 :root {
 
@@ -60,7 +61,7 @@
     box-sizing: border-box;
 }
 
-a { text-decoration: none; }
+a { text-decoration: none !important; color: var(--orange)}
 
 li { list-style: none; }
 
@@ -153,9 +154,10 @@ body.active {overflow-y: hidden;}
     padding: 13px 34px;
     clip-path: var(--polygon-1);
     transition: var(--transition-1);
+    outline: none;
   }
   
-  .btn-primary { background: var(--raisin-black-1); }
+  .btn-primary { background: var(--raisin-black-1); border-color:transparent;}
   
   .btn-primary:is(:hover, :focus) { background: var(--orange); }
   
@@ -169,7 +171,7 @@ body.active {overflow-y: hidden;}
     color: var(--white);
   }
 
-  .btn-link:is(:hover, :focus) { color: var(--orange); }
+  .btn-link:is(:hover, :focus) { color: var(--orange); text-decoration: none;}
 
 .has-scrollbar::-webkit-scrollbar { height: 6px; }
 
@@ -237,7 +239,7 @@ body.active {overflow-y: hidden;}
   .navbar {
     position: fixed;
     top: 0;
-    right: -300px;
+    right: -300px ;
     width: 100%;
     max-width: 300px;
     background: var(--raisin-black-2);
@@ -246,6 +248,7 @@ body.active {overflow-y: hidden;}
     visibility: hidden;
     z-index: 10;
     transition: var(--transition-2);
+    display: block;
   }
 
   .navbar.active {
@@ -315,6 +318,19 @@ body.active {overflow-y: hidden;}
   /* HERO */
   .hero {
     background: url("../images/hero-banner-v4.jpg") no-repeat;
+    background-size: cover;
+    background-position: top center;
+    margin-top: 90px;
+    padding: var(--section-padding) 0;
+    height: 100vh;
+    max-height: 1000px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+
+  .hero2 {
     background-size: cover;
     background-position: top center;
     margin-top: 90px;
@@ -566,7 +582,6 @@ body.active {overflow-y: hidden;}
 .team-member {
   position: relative;
   border-radius: 50%;
-  border: 3px solid var(--raisin-black-3);
   transition: var(--transition-1);
 }
 
@@ -771,6 +786,8 @@ body.active {overflow-y: hidden;}
     background: var(--white);
     color: var(--orange);
   }
+
+  
   
   /* Responsive */
   @media (min-width: 420px) {
