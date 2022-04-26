@@ -21,10 +21,13 @@
         "supertest": "^4.0.2"
     },
     "dependencies": {
+        "bcrypt": "^5.0.1",
         "cors": "^2.8.5",
         "ejs": "^3.1.7",
         "express": "^4.17.1",
         "mongoose": "^6.3.1",
-        "path": "^0.12.7"
+        "mongoose-unique-validator": "^3.0.0",
+        "path": "^0.12.7",
+        "validator": "^13.7.0"
     }
 }

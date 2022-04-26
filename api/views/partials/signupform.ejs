@@ -1,0 +1,235 @@
+<style>
+    @import url("https://fonts.googleapis.com/css2?family=Encode+Sans+SC:wght@100;400;500;600;700&display=swap");
+
+.main {
+  position: relative; 
+  top: -100px;
+  width: 500px;
+  max-width: 90%;
+  text-align: center;
+  background-color: white;
+  padding: 25px 20px;
+  border-radius: 10px;
+}
+
+.main > h1 {
+  font-size: 30px;
+  color: black;
+  margin: 0 0 30px 0;
+}
+
+.main > form > input {
+  width: 95%;
+  padding: 15px;
+  background-color: #ccc;
+  color: gray;
+  border: 0;
+  margin: 10px 5px;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.main > form > input[type="submit"] {
+  background-color: #03AABD;
+  padding: 15px;
+  width: 95%;
+  border: none;
+  color: white;
+  margin-top: 20px;
+  margin-left: 5px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.main > form > input:focus,
+.main > form > button:focus {
+  outline: none;
+}
+
+/* HERO */
+.hero {
+  background: url("../images/apex-register.jpeg") no-repeat;
+  background-size: cover;
+  background-position: top center;
+  margin-top: 90px;
+  padding: var(--section-padding) 0;
+  height: 100vh;
+  width: 100%;
+  max-height: 1000px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+
+
+#requirements {
+  font-family: "Roboto", arial, sans-serif;
+  display: none;
+  flex-direction: column;
+  background: #fefefe;
+  color: #000;
+  position: relative;
+  margin: 5px auto;
+  padding: 5px;
+  margin-top: 10px;
+  width: 300px;
+  text-align: center;
+  border-radius: 10px 10px 10px 10px;
+}
+
+#requirements h3 {
+  font-size: 20px;
+  margin: 10px auto;
+}
+
+#requirements p {
+  padding: 5px auto;
+  font-size: 15px;
+  margin: 5px auto;
+}
+
+/* Green text color when the requirements are right */
+.valid {
+  color: green;
+}
+
+/* Orange text color when the requirements are wrong */
+.invalid {
+  color: rgb(236, 111, 102);
+}
+
+</style>
+<div class="hero" id="hero">
+    <div class="main">
+      <h1>SIGN UP TO LEVEL UP!</h1>
+      
+      <form action="/login" method="POST">
+        <input type="name" name="name" placeholder="My Name" />
+        <input type="email" name="email" placeholder="example@email.com" />
+        <input id="password" type="password" name="password" placeholder="* * * * * *" />
+        <input type="submit" value="Sign Up">
+        <div id="requirements">
+        <h3>password must contain:</h3>
+        <p id="letter" class="invalid">A lowercase letter</p>
+        <p id="capital" class="invalid">An uppercase letter</p>
+        <p id="number" class="invalid">At least two numbers</p>
+        <p id="length" class="invalid">Over 5 characters long</p>
+      </div>
+      </form>
+      
+    </div>
+  </div>
+
+  <script defer> 
+let myInput = document.getElementById("password");
+let form = document.querySelector("form");
+let letter = document.getElementById("letter");
+let capital = document.getElementById("capital");
+let number = document.getElementById("number");
+let length = document.getElementById("length");
+
+// When the user clicks on the input field, show the requirements box
+myInput.onfocus = function () {
+  document.getElementById("requirements").style.display = "block";
+};
+
+// When the user clicks outside of the input field, hide the requirements box
+myInput.onblur = function () {
+  document.getElementById("requirements").style.display = "none";
+};
+
+// When the user starts to type something inside the input field
+myInput.onkeyup = function () {
+  // Check codename has at least 1 lowercase letter using regex, [a-z] checks for lowercase letters and global flag checks everywhere in the string
+  let lowerCaseLetters = /[a-z]/g;
+  if (myInput.value.match(lowerCaseLetters)) {
+    letter.classList.remove("invalid");
+    letter.classList.add("valid");
+  } else {
+    letter.classList.remove("valid");
+    letter.classList.add("invalid");
+  }
+
+  // Check codename has at least 1 capital letter using regex [A-Z] specifies capital letters with /g global flag to check everywhere in the string
+  let upperCaseLetters = /[A-Z]/g;
+  if (myInput.value.match(upperCaseLetters)) {
+    capital.classList.remove("invalid");
+    capital.classList.add("valid");
+  } else {
+    capital.classList.remove("valid");
+    capital.classList.add("invalid");
+  }
+
+  // Check numbers using regex, positive lookahead(?=) asserts that {2} matches (.*\d) first capture group two times, . matches any character (except for line terminators) * matches the previous token between zero and unlimited times, as many times as possible, giving back as needed (greedy) \d matches a digit (equivalent to [0-9])
+  let numbers = /(?=(.*\d){2})/;
+  if (myInput.value.match(numbers)) {
+    number.classList.remove("invalid");
+    number.classList.add("valid");
+  } else {
+    number.classList.remove("valid");
+    number.classList.add("invalid");
+  }
+
+  // Check codename's length using .length
+  if (myInput.value.length > 5) {
+    length.classList.remove("invalid");
+    length.classList.add("valid");
+  } else {
+    length.classList.remove("valid");
+    length.classList.add("invalid");
+  }
+};
+
+//Function to validate length of codename string
+function checkLength() {
+  let myInput = document.getElementById("password").value;
+  if (myInput.length > 5) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+//Function to validate that codename string has at least 1 uppercase and 1 lowercase letter
+function checkCases() {
+  let myInput = document.getElementById("password").value;
+  let upperAndLowerCases = /(?=[A-Z]*.*[a-z])(?=[a-z]*.*[A-Z])[a-zA-Z]/;
+  if (upperAndLowerCases.test(myInput)) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+//Function to validate codename string contains
+function checkNumbers() {
+  let myInput = document.getElementById("password").value;
+  let numbers = /^(?=(.*\d){2})/;
+  if (numbers.test(myInput)) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+function validate(event) {
+  event.preventDefault();
+  checkLength();
+  checkCases();
+  checkNumbers();
+  if (checkLength() && checkCases() && checkNumbers() === true) {
+    alert("Thanks, try logging in!");
+    // const username = form.name.value;
+    // const email = form.email.value;
+    // const password = form.password.value;
+    // console.log(username, email, password)s
+  } else {
+    alert("Please try again after fulfilling the requirements");
+  }
+}
+
+form.addEventListener("submit", validate);
+
+  </script>
