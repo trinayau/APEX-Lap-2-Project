@@ -1,10 +1,19 @@
 const Model = require('../models/Model');
 const User = require('../models/User');
+const jwt = require('jsonwebtoken');
 
 //handle errors
 const handleErrors = (err) => {
     console.log(err.message, err.code);
     let errors = {username: '', password: '', email: ''};
+
+    if (err.message === 'Incorrect email') {
+        errors.email = 'That email is not registered'
+    }
+
+    if (err.message === 'Invalid password') {
+        errors.email = 'That password is incorrect'
+    }
 
     //duplicate error codename
     if(err.code === 11000 && err.message.includes('username')){
@@ -24,6 +33,14 @@ const handleErrors = (err) => {
     return errors;
 }
 
+const jwtMaxAge = 3 * 24 * 60 * 60; //3 days
+
+//jwt
+const createToken = (id) => {
+    return jwt.sign({id}, 'secret', {expiresIn: jwtMaxAge} )
+}
+
+
 //signup get
 async function getSignup (req, res) {
     try {
@@ -39,11 +56,13 @@ async function addUser (req, res) {
     const { username, password, email } = req.body;
     try {
         const user = await User.create({ username, password, email });
-        res.status(201).json(user);
+        const token = createToken(user._id);
+        res.cookie('jwt', token, {httpOnly: true, maxAge: jwtMaxAge * 1000}) //3 days
+        res.status(201).json({user: user._id});
     }
     catch(err) {
         const errors = handleErrors(err);
-        res.status(422).json(errors);
+        res.status(422).json({errors});
     }
 }
 
@@ -60,13 +79,15 @@ async function getLogin (req, res) {
 
 //login post
 async function loginUser (req, res) {
-    try {
-        const {email, password} = req.body;
-        console.log(email, password);
-        res.send('user login')
+    const {email, password} = req.body;
+    try {        
+        const user = await User.login(email, password);
+        const token = createToken(user._id);
+        res.cookie('jwt', token, {httpOnly: true, maxAge: jwtMaxAge * 1000}) //3 days
+        res.status(200).json({user: user._id})
     } catch (err) {
-        console.log(err)
-        res.status(422).json({err})
+        const errors = handleErrors(err);
+        res.status(422).json({errors});
     }
 }
 

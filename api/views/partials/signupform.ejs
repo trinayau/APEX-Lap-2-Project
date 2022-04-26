@@ -100,6 +100,14 @@
   color: rgb(236, 111, 102);
 }
 
+#nameError {
+  color: red;
+}
+
+#emailError {
+  color: red;
+}
+
 </style>
 <div class="hero" id="hero">
     <div class="main">
@@ -107,7 +115,9 @@
       
       <form action="/login" method="POST">
         <input type="name" name="name" placeholder="My Name" />
+        <div id="nameError"></div>
         <input type="email" name="email" placeholder="example@email.com" />
+        <div id="emailError"></div>
         <input id="password" type="password" name="password" placeholder="* * * * * *" />
         <input type="submit" value="Sign Up">
         <div id="requirements">
@@ -118,7 +128,7 @@
         <p id="length" class="invalid">Over 5 characters long</p>
       </div>
       </form>
-      
+
     </div>
   </div>
 
@@ -214,17 +224,38 @@ function checkNumbers() {
   }
 }
 
-function validate(event) {
+
+async function validate(event) {
   event.preventDefault();
   checkLength();
   checkCases();
   checkNumbers();
+  nameError.textContent = '';
+  emailError.textContent = '';
   if (checkLength() && checkCases() && checkNumbers() === true) {
-    alert("Thanks, try logging in!");
-    // const username = form.name.value;
-    // const email = form.email.value;
-    // const password = form.password.value;
-    // console.log(username, email, password)s
+    //alert("Thanks, try logging in!");
+    const username = form.name.value;
+    const email = form.email.value;
+    const password = form.password.value;
+    try {
+      const res = await fetch('/users/signup', {
+        method: 'POST',
+        body: JSON.stringify({username: username, email: email, password: password}),
+        headers: {'Content-type': 'application/json'}
+      });
+      const data = await res.json();      
+      if (data.errors){
+        console.log(data.errors)
+        document.getElementById("nameError").textContent = data.errors.username;   
+        document.getElementById("emailError").textContent = data.errors.email;   
+      }
+      if (data.user) {
+        console.log(data);
+        //location.href = 'http://localhost:3000'
+      }
+    } catch (err) {
+      console.log(err)
+    }
   } else {
     alert("Please try again after fulfilling the requirements");
   }
