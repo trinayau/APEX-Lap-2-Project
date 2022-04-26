@@ -23,7 +23,7 @@ app.get('*', checkUser);
 
 app.get('/', (req, res) => res.render('index'));
 
-app.get('/testRoute', requireAuth, (req, res) => res.render('testPage'));
+app.get('/habitPage', requireAuth, (req, res) => res.render('habitPage'));
 
 app.use(authRoutes);
 
