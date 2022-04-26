@@ -2,6 +2,47 @@ const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 const { isEmail } = require('validator');
 const uniqueValidator = require('mongoose-unique-validator');
+<<<<<<< HEAD
+
+const habitSchema = new mongoose.Schema({
+  habitId: {
+    type: Number,
+    required: true
+  },
+  habitName: {
+    type: String,
+    required: true,
+    maxlength: [50, 'Game title can only be up to 50 characters']
+  },
+  habitType: {
+    type:String,
+    required: true
+  },
+  habitComplete: {
+    type: Boolean,
+    required: true
+  }
+})
+
+const gameSchema = new mongoose.Schema({
+  gameID: {
+    type: Number,
+    required: false,
+  },
+  gameName: {
+    type: String,
+    required: true,
+    lowercase: true,
+    maxlength: [50, 'Game title can only be up to 50 characters']
+  },
+  gameImg: {
+    type: String,
+    required: false,
+  },
+  habits: [habitSchema]
+})
+=======
+>>>>>>> bce4a278793cbdb97a5e83115b7a77d6658cd687
 
 const userSchema = new mongoose.Schema({
   username: {
@@ -22,7 +63,12 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: [true, 'password required'],
     minlength: [5, 'Password must be at least 5 characters'],
+<<<<<<< HEAD
+  },
+  games: [gameSchema]
+=======
   }
+>>>>>>> bce4a278793cbdb97a5e83115b7a77d6658cd687
 });
 
 userSchema.pre("save", async function(next){
