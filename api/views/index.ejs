@@ -8,10 +8,8 @@
 </head>
 <body id="top">
 <header class="header">
-    <%- include('partials/header'); -%>
-       
+    <%- include('partials/header'); -%>  
 </header>
-
 <main>
     <article>
         <!--Hero section-->
@@ -19,11 +17,11 @@
             <div class="container">
                 <p class="hero-subtitle">Get To The Next Level</p>
                 <h1 class="h1 hero-title">APEX.IO</h1>
-                <div class="btn-group">
-                    <button class="btn btn-primary" href="/testPage">
-                        <a href="/testRoute" style="color:white"><span>Start Tracking</span></a>
+                <div class="btn-group" style="text-align:center">
+                    <a href="/habitPage"><button class="btn btn-primary">
+                        <span>Start Tracking</span>
                         <ion-icon name="play-circle"></ion-icon>
-                    </button>
+                    </button></a>
                 </div>
             </div>
         </section>
@@ -288,5 +286,6 @@
 </main>
 
 <%- include('partials/footer'); -%>
+
 </body>
 </html>

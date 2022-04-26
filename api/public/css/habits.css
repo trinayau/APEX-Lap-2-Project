@@ -1,0 +1,201 @@
+  /***************** body *****************/
+
+
+* {
+    margin: 0;
+    padding: 0;
+  }
+  
+  html {
+    box-sizing: border-box;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+  
+  body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+      "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+      sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background: #1B121F;
+  }
+
+  
+  .card-container {
+    margin-top: 150px;
+    padding: 10px 20px;
+    background-color: whitesmoke;
+    border-radius: 15px;
+    margin-bottom: 50px;
+  }
+
+  /***************** Card bodies *****************/
+
+h1{
+    text-align: center;
+}
+
+  .card{
+      margin: 20px 15px;
+      border-radius: 20px;
+      
+  }
+
+  .card-body a {
+      color: #1B121F;
+      text-decoration: none;
+      font-size: 15px;
+      margin-top: auto;
+      font-weight: 600;
+  }
+
+.card-body a:hover {
+    color: #03AABD;
+    text-decoration: none;
+}
+
+/***************** checkboxes *****************/
+.checkboxes label {
+  display: inline-block;
+  white-space: nowrap;
+}
+.checkboxes input {
+  vertical-align: middle;
+}
+.checkboxes label span {
+  vertical-align: middle;
+}
+
+.checkboxes span {
+  display: inline!important;
+}
+
+/***************** Habit input *****************/
+
+
+h2 {
+  text-align: center;
+  font-weight: 400;
+ 
+}
+
+.habit-header {
+  color: #1B121F;
+}
+
+.add-habit {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid black;
+}
+
+.add-habit input {
+  padding: 10px;
+  margin: 5px;
+  outline: 0;
+  border: 0;
+  border-radius: 100px;
+}
+
+.add-habit select {
+  border-radius: 10px;
+  border: none;
+}
+
+
+/***************** Habit card *****************/
+
+
+.dashboard {
+  display: flex;
+}
+
+svg {
+  width: 114px;
+  height: 114px;
+  margin: 1em;
+}
+
+.bg {
+  fill: none;
+  stroke-width: 10px;
+  stroke: #1A2C34;
+}
+
+[class^="meter-"] {
+  fill: none;
+  stroke-width: 10px;
+  stroke-linecap: round;
+  transform: rotate(-90deg);
+  transform-origin: 50% 50%;
+  
+}
+
+.meter-1 {
+  stroke-dasharray: 360;
+  stroke-dashoffset: 100;
+  stroke: aqua;
+  animation: progress-1 1s ease-out;
+}
+
+
+/***************** Posted Habit *****************/
+
+.habits {
+text-align: left;
+list-style: none;
+}
+
+.habits li {
+border-bottom: 1px solid gray;
+padding: 10px;
+font-weight: 400;
+display: flex;
+align-items: center;
+}
+
+.habits label {
+flex: 1;
+cursor: pointer;
+}
+
+.habits input {
+margin-right: 12px;
+}
+
+.habits input {
+display: none;
+}
+
+.habits input + label:before {
+content: "+";
+margin-right: 12px;
+}
+
+.habits input + label span {
+font-weight: 200;
+font-size: 0.75rem;
+}
+
+.habits input:checked + label {
+text-decoration: line-through;
+color: lightgrey;
+}
+
+.habits button {
+padding-left: 30px;
+background: none;
+margin: 5px;
+outline: 0;
+border: 0;
+border-radius: 10px;
+}
