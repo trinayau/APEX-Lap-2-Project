@@ -53,6 +53,14 @@
     border-radius: 8px;
     cursor: pointer;
   }
+
+  #emailError {
+  color: red;
+  }
+
+  #passwordError {
+    color: red;
+  }
   
   .main > form > input:focus,
   .main > form > button:focus {
@@ -64,8 +72,52 @@
       <h1>SIGN IN TO YOUR ACCOUNT</h1>
       <form action="/login" method="POST">
         <input type="email" name="email" placeholder="example@email.com" />
+        <div id="emailError"></div>
         <input type="password" name="password" placeholder="* * * * * *" />
+        <div id="passwordError"></div>
         <button>SIGN IN</button>
       </form>
     </div>
   </div>
+
+  <script defer> 
+    let form = document.querySelector("form");    
+    
+    const emailError = document.querySelector('#emailError');
+    const passwordError = document.querySelector('#passwordError');
+
+    async function validate(event) {
+      event.preventDefault(); 
+      emailError.textContent = '';
+      passwordError.textContent = '';           
+      const email = form.email.value;
+      const password = form.password.value;
+      try {
+        const res = await fetch('/login', {
+          method: 'POST',
+          body: JSON.stringify({email: email, password: password}),
+          headers: {'Content-type': 'application/json'}
+        });
+        const data = await res.json();      
+        if (data.errors){
+          if(data.errors.email.length === 28){
+            emailError.textContent = data.errors.email;
+          }  
+          if (data.errors.email.length === 26) {
+            passwordError.textContent = data.errors.email
+          }  
+            
+        }
+        if (data.user) {
+          console.log(data);
+          location.assign('/')
+        }
+      } catch (err) {
+        console.log(err)
+      }
+    }
+    
+    
+    form.addEventListener("submit", validate);
+    
+</script>
