@@ -37,7 +37,7 @@ const jwtMaxAge = 3 * 24 * 60 * 60; //3 days
 
 //jwt
 const createToken = (id) => {
-    return jwt.sign({id}, 'secret', {expiresIn: jwtMaxAge} )
+    return jwt.sign({id}, 'secret')
 }
 
 
@@ -70,7 +70,7 @@ async function addUser (req, res) {
 //login get
 async function getLogin (req, res) {
     try {
-        res.render('login')
+        res.render('login', { user: req.user })
     } catch (err) {
         console.log(err)
         res.status(422).json({err})
@@ -91,6 +91,12 @@ async function loginUser (req, res) {
     }
 }
 
+//logout get
+async function getLogout (req, res) {
+    //replacing jwt with empty cookie with 1 millisecond expiration
+    res.cookie('jwt', '', {maxAge: 1});
+    res.redirect('/');
+}
 
 
-module.exports = { getSignup, addUser, getLogin, loginUser}
+module.exports = { getSignup, addUser, getLogin, loginUser, getLogout}

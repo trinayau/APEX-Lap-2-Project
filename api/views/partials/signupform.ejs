@@ -238,7 +238,7 @@ async function validate(event) {
     const email = form.email.value;
     const password = form.password.value;
     try {
-      const res = await fetch('/users/signup', {
+      const res = await fetch('/signup', {
         method: 'POST',
         body: JSON.stringify({username: username, email: email, password: password}),
         headers: {'Content-type': 'application/json'}
@@ -251,7 +251,7 @@ async function validate(event) {
       }
       if (data.user) {
         console.log(data);
-        //location.href = 'http://localhost:3000'
+        location.assign('/');
       }
     } catch (err) {
       console.log(err)

@@ -2,7 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const path = require('path');
 const cookieParser = require('cookie-parser');
-const {requireAuth} = require('./middleware/authMiddleware');
+const {requireAuth, checkUser} = require('./middleware/authMiddleware');
 
 const app = express();
 
@@ -16,12 +16,14 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.get('/', requireAuth, (req, res) => res.render('index'))
-
-app.get('/testRoute/', requireAuth, (req, res) => res.render('testPage'))
-
 app.use('/habits', habitRoutes)
 
-app.use('/users', authRoutes)
+app.get('*', checkUser);
+
+app.get('/', (req, res) => res.render('index'));
+
+app.get('/testRoute', requireAuth, (req, res) => res.render('testPage'));
+
+app.use(authRoutes);
 
 module.exports = app;
