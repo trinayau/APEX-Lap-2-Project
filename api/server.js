@@ -15,7 +15,10 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.get('/', (req, res) => res.render('index'))
 
+<<<<<<< HEAD
 app.get('/', (req, res) => res.send('APEX'));
+=======
+>>>>>>> bce4a278793cbdb97a5e83115b7a77d6658cd687
 
 app.use('/habits', habitRoutes);
 
