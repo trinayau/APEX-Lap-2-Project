@@ -82,26 +82,38 @@
   </nav>
 
   <div class="header-actions">
-
-
-    <a class="btn-sign_in" href="/users/login">
-
-      <div class="icon-box">
-        <ion-icon name="log-in-outline"></ion-icon>
-      </div>
-
-      <span>Log-in</span>
-
-    </a>
-    <a class="btn-sign_in" href="/users/signup">
-
+    
+    <% if (user) { %>
+      <li class="navbar-link" style="color:#03AABD; padding-right: 50px;">Welcome: <%= user.username %></li>
+      <a class="btn-sign_in" href="/logout">
+  
         <div class="icon-box">
           <ion-icon name="log-in-outline"></ion-icon>
         </div>
 
-        <span>Register</span>
+        <span>Logout</span>
 
       </a>
+    <% } else { %>
+      <a class="btn-sign_in" href="/login">
+
+        <div class="icon-box">
+          <ion-icon name="log-in-outline"></ion-icon>
+        </div>
+  
+        <span>Log-in</span>
+  
+      </a>
+      <a class="btn-sign_in" href="/signup">
+  
+          <div class="icon-box">
+            <ion-icon name="log-in-outline"></ion-icon>
+          </div>
+  
+          <span>Register</span>
+  
+        </a>
+    <% } %>
 
   </div>
 

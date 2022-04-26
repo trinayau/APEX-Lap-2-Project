@@ -1107,7 +1107,7 @@ body.active {overflow-y: hidden;}
       transition: var(--transition-1);
     }
   
-    .btn-sign_in::after {
+    /* .btn-sign_in::after {
       content: "";
       position: absolute;
       top: 50%;
@@ -1118,7 +1118,7 @@ body.active {overflow-y: hidden;}
       background: var(--eerie-black);
       box-shadow: 0 3px 7px hsla(345, 75%, 30%, 0.2),
                   inset 0 3px 7px 0 hsla(335, 53%, 14%, 0.4);
-    }
+    } */
   
     .btn-sign_in:is(:hover, :focus) { color: var(--orange); }
   
