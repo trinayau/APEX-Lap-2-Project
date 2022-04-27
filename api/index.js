@@ -15,7 +15,9 @@ mongoose.connect(mongodbURI, { useNewUrlParser: true, useUnifiedTopology: true }
             grant_type: "client_credentials"
         })
         axios.post(`https://id.twitch.tv/oauth2/token?${params.toString()}`)
-            .then(resp => module.exports = resp.data['access_token'])
+            .then(resp => {
+                process.env['ACCESS_TOKEN'] = resp.data['access_token'];
+            })
         server.listen(port, () => console.log(`\nServer listening on port http://localhost:${port}\n`));
     })
     .catch(err => console.log(err));
