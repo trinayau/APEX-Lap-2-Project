@@ -17,6 +17,7 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+
 app.get('*', checkUser);
 app.use('/games', gameRoutes);
 
@@ -25,6 +26,11 @@ app.get('/habitPage', requireAuth, (req, res) => res.render('habitPage', { title
 
 app.use(authRoutes);
 
+app.use((req, res) => {
+    res.status(404).render('404', {
+        title: "404"
+    })
+})
 //app.use('/search', searchRoutes);
 
 module.exports = app;
