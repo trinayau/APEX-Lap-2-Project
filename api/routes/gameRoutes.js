@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const gameController = require('../controllers/gameController')
+const habitController = require('../controllers/habitController')
 
 router.route('/')
     .get(gameController.getAll)         //done
@@ -8,11 +9,8 @@ router.route('/')
 
 router.route('/:id')
     .get(gameController.showGameById)   //done           
-    .put(gameController.updateGame)     //in progress
+    .post(habitController.createHabit)
+    .delete(habitController.deleteHabit)    //in progress
 
-router.route('/:id/:id2')
-    .get(gameController.getHabits)      //in progress
-    .post(gameController.createHabit)   //in progress
-    .delete(gameController.deleteHabit) //in progress
 
 module.exports = router;
