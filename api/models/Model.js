@@ -2,7 +2,7 @@
 
 //require other classes if needed
 
-moudle.exports = class ClassExample {
+module.exports = class ClassExample {
     constructor(data){
         this.id = data.id;
         this.name = data.name;

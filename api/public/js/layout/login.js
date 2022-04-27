@@ -40,5 +40,3 @@ window.addEventListener("scroll", function () {
   }
 
 })
-
-

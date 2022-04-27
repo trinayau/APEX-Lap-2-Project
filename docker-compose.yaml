@@ -12,7 +12,9 @@ services:
         source: ./api
         target: /code
     working_dir: /code
-    command: "bash", "-c", "npm install && npm run dev"
+    command: ["bash", "-c", "npm install && npm run dev"]
+
+
     depends_on:
       - db
   db:
