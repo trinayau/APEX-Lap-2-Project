@@ -1,13 +1,8 @@
-const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 const Schema = require('./Schema');
 
 module.exports = class User {
-    constructor(data) {
-        this.email = data.email;
-        this.username = data.username;
-        this.password = data.password;
-    }
+    constructor() {}
 
     static async findByEmail(email) {
         return new Promise(async (resolve, reject) => {
@@ -62,21 +57,6 @@ module.exports = class User {
                 //resolve (result);
             } catch (err) {
                 reject('object could not be updated');
-            }
-        });
-    };
-
-    static async addUser(objectData) {
-        return new Promise(async (resolve, reject) => {
-            try {
-                //const hashedPassword = await bcrypt.hash(objectData.body.password, 10)
-                //const user = {name: objectData.name, password: hashedPassword}
-                //let result = await // insert into database [user]
-                //const {id, title, etc} = objectData
-                //let result = await // insert into database [id, title, etc]
-                //resolve (result);
-            } catch (err) {
-                reject('user could not be added');
             }
         });
     };
