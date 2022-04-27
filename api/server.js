@@ -2,12 +2,13 @@ const express = require('express');
 const cors = require('cors');
 const path = require('path');
 const cookieParser = require('cookie-parser');
-const {requireAuth, checkUser} = require('./middleware/authMiddleware');
+const { requireAuth, checkUser } = require('./middleware/authMiddleware');
 
 const app = express();
 
-const habitRoutes = require('./routes/habitsRoutes');
+const gameRoutes = require('./routes/gameRoutes');
 const authRoutes = require('./routes/authRoutes');
+const searchRoutes = require('./routes/searchRoutes');
 
 app.set('view engine', 'ejs');
 
@@ -16,14 +17,14 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/habits', habitRoutes)
-
 app.get('*', checkUser);
+app.use('/games', gameRoutes);
 
-app.get('/', (req, res) => res.render('index'));
-
-app.get('/testRoute', requireAuth, (req, res) => res.render('testPage'));
+app.get('/', (req, res) => res.render('index', { title: 'Home'}));
+app.get('/habitPage', requireAuth, (req, res) => res.render('habitPage', { title: 'Habits'}));
 
 app.use(authRoutes);
+
+//app.use('/search', searchRoutes);
 
 module.exports = app;
