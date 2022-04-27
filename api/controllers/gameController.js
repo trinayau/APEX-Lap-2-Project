@@ -1,55 +1,44 @@
 const Game = require('../models/Game');
 
-async function index(req, res) {
+async function getAll(req, res) {
     try {
-        //const object = await Model.all;
-        //res.status(200).json(object)
-        res.send('APEX HABITS');
+        const games = await Game.all;
+        res.status(200).json(games)
     } catch (err) {
         res.status(500).json({ err })
     }
 }
 
-async function show(req, res) {
+async function createGame(req, res) {
     try {
-        const object = await Model.getById(req.params.id);
-        res.status(200).json(object)
+        const { gameId, gameName } = req.body;
+        await Game.create({ gameId, gameName })
+        res.status(201).json({ user: username });
+    } catch (err) {
+        console.log(err)
+        res.status(422).json({ err })
+    }
+}
+
+async function showGameById(req, res) {
+    try {
+        const game = await Game.getById(req.params.id);
+        res.status(200).json(game)
     } catch (err) {
         res.status(404).json({ err })
         console.log(err)
     }
 }
 
-async function create(req, res) {
+async function updateGame(req, res) {
     try {
-        const object = await Model.create(req.body);
-        res.status(201).json(object)
+        const game = await Game.getById(req.params.id);
+        const resp = await game.update();
+        res.status(204).json(resp)
     } catch (err) {
         console.log(err)
         res.status(422).json({ err })
     }
 }
 
-async function destroy(req, res) {
-    try {
-        const object = await Model.getById(req.params.id);
-        const resp = await object.destroy();
-        res.status(204).end();
-    } catch (err) {
-        res.status(404).json({ err });
-        console.log(err)
-    };
-}
-
-async function update(req, res) {
-    try {
-        const object = await Model.getById(req.params.id);
-        const resp = await object.update();
-        res.status(204).json(object)
-    } catch (err) {
-        console.log(err)
-        res.status(422).json({ err })
-    }
-}
-
-module.exports = { index, show, create, destroy, update }
+module.exports = { getAll, showGameById, createGame, updateGame}
