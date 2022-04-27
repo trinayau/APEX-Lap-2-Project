@@ -44,4 +44,16 @@ module.exports = class Game {
             }
         });
     };
+
+    static async getHabits(id) {
+        return new Promise(async (resolve, reject) => {
+            try {
+                const game = Schema.Game.findOne({ gameId: id });
+                const habits = game.habits;
+                resolve(habits);
+            } catch (err) {
+                reject(`game with id: ${id} not found`);
+            }
+        });
+    }
 }
