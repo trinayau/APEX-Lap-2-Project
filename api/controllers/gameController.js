@@ -1,4 +1,4 @@
-//const Habit = require('../models/User');
+const Game = require('../models/Game');
 
 async function index(req, res) {
     try {
