@@ -22,9 +22,9 @@ app.use('/habits', habitRoutes)
 
 app.get('*', checkUser);
 
-app.get('/', (req, res) => res.render('index'));
+app.get('/', (req, res) => res.render('index', { title: 'Home'}));
 
-app.get('/habitPage', requireAuth, (req, res) => res.render('habitPage'));
+app.get('/habitPage', requireAuth, (req, res) => res.render('habitPage', { title: 'Habits'}));
 
 app.use(authRoutes);
 
