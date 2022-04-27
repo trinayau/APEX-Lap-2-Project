@@ -45,7 +45,7 @@ const createToken = (username) => {
 //signup get
 async function getSignup(req, res) {
     try {
-        res.render('signup')
+        res.render('signup', {title: 'Sign Up'})
     } catch (err) {
         console.log(err)
         res.status(422).json({ err })
@@ -71,7 +71,7 @@ async function addUser(req, res) {
 //login get
 async function getLogin(req, res) {
     try {
-        res.render('login', { user: req.user })
+        res.render('login', { user: req.user, title: 'Login'})
     } catch (err) {
         console.log(err)
         res.status(422).json({ err })
@@ -98,6 +98,7 @@ async function getLogout(req, res) {
     res.cookie('jwt', '', { maxAge: 1 });
     res.redirect('/');
 }
+
 
 
 module.exports = { getSignup, addUser, getLogin, loginUser, getLogout }

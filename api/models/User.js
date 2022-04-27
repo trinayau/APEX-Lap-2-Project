@@ -72,10 +72,6 @@ module.exports = class User {
                 //const hashedPassword = await bcrypt.hash(objectData.body.password, 10)
                 //const user = {name: objectData.name, password: hashedPassword}
                 //let result = await // insert into database [user]
-
-
-
-
                 //const {id, title, etc} = objectData
                 //let result = await // insert into database [id, title, etc]
                 //resolve (result);
