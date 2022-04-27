@@ -25,6 +25,6 @@ app.get('/habitPage', requireAuth, (req, res) => res.render('habitPage', { title
 
 app.use(authRoutes);
 
-//app.use('/search', searchRoutes);
+app.use('/search', searchRoutes);
 
 module.exports = app;
