@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const objectController = require('../controllers/habitsController')
+const gameController = require('../controllers/gameController')
 
 
 // router.get('/', objectController.index)
@@ -9,14 +9,13 @@ const objectController = require('../controllers/habitsController')
 // router.delete('/:id', objectController.destroy)
 
 router.route('/')
-    .get(objectController.index)
-    .post(objectController.create)
-    
-router.route(':/id')
-    .get(objectController.show)
-    .delete(objectController.destroy)
-    .put(objectController.update) //update not create
+    .get(gameController.index)
+    .post(gameController.create)
 
+router.route('/:id')
+    .get(gameController.show)
+    .post(gameController.create)
+    .put(gameController.update)
 
 // router.route('/users')
 //     .get(objectController.index)
