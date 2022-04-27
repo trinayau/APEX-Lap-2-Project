@@ -20,8 +20,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.get('*', checkUser);
 app.use('/games', gameRoutes);
 
-app.get('/', (req, res) => res.render('index'));
-app.get('/habitPage', requireAuth, (req, res) => res.render('habitPage'));
+app.get('/', (req, res) => res.render('index', { title: 'Home'}));
+app.get('/habitPage', requireAuth, (req, res) => res.render('habitPage', { title: 'Habits'}));
 
 app.use(authRoutes);
 
