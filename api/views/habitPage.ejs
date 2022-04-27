@@ -79,20 +79,7 @@
 
         <div class="container">
             <h4 class="text-center">Games:</h4> <br>
-            <div class="checkboxes col-md text-center custom-control custom-radio">
-                <label class="radio text-center">
-                    <input type="radio" name="game" id="ApexL" value="ApexL" checked>
-                    Apex Legends
-                </label>
-                <label class="radio text-center">
-                    <input type="radio" name="game" id="fortnite" value="fortnite">
-                    Fortnite
-                </label>
-                <label class="radio text-center">
-                    <input type="radio" name="game" id="CSGO" value="CS:GO">
-                    CS:GO
-                </label>
-            </div>
+            
             <br>
             <h2 class="habith2">HABITS</h2>
 
@@ -101,13 +88,25 @@
 
                 <input class="habit" type="text" name="habit" placeholder="Enter Habit Name" required />
                 <input type="number" name="reps" placeholder="# of Repetitions" min="1" required />
+                <input class="habit" type="text" name="habit" placeholder="Enter Game Name" required />
                 <input type="submit" value="+ Add Habit" />
 
             </form>
 
             <ul class="habits">
-                <li>Loading...</li>
+         
             </ul>
+        </div>
+        <div class="habits content">
+            <h2>Habits</h2>
+            <% if (habits.length > 0) { %> 
+                <% habits.forEach(habit => { %>
+                <h3 class="habit-title"><%= habit.habitName %></h3>
+                <p class="snippet"><%= habit.habitReps %>/<%=habit.habitMaxReps%> Complete: <%= habit.habitComplete %> Streak: <%=habit.habitStreak %></p>
+                <% }) %>
+             <% } else { %>
+                <p>There are no habits to display</p>
+                <% } %>
         </div>
     </div>
     <script defer src="/js/habits.js"></script>

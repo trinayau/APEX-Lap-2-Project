@@ -83,4 +83,4 @@ const User = mongoose.model('user', userSchema);
 const Game = mongoose.model('game', gameSchema);
 const Habit = mongoose.model('habit', habitSchema);
 
-module.exports = {User, Game, Habit};
+module.exports = { User, Game, Habit };

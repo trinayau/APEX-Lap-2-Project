@@ -9,6 +9,7 @@ const app = express();
 const gameRoutes = require('./routes/gameRoutes');
 const authRoutes = require('./routes/authRoutes');
 const searchRoutes = require('./routes/searchRoutes');
+const { Game, Habit } = require('./models/Schema');
 
 app.set('view engine', 'ejs');
 
@@ -21,7 +22,19 @@ app.get('*', checkUser);
 app.use('/games', gameRoutes);
 
 app.get('/', (req, res) => res.render('index', { title: 'Home'}));
-app.get('/habitPage', requireAuth, (req, res) => res.render('habitPage', { title: 'Habits'}));
+
+app.get('/habitPage', requireAuth, (req, res) => {
+    Habit.find()
+        .then((result) => {
+            res.render('habitPage', { title: 'Habits', habits: result})
+        })
+        .catch((err) => {
+            console.log(err)
+        })
+    
+});
+
+
 
 app.use(authRoutes);
 
