@@ -2,7 +2,6 @@ const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 const { isEmail } = require('validator');
 const uniqueValidator = require('mongoose-unique-validator');
-<<<<<<< HEAD
 
 const habitSchema = new mongoose.Schema({
   habitId: {
@@ -41,8 +40,6 @@ const gameSchema = new mongoose.Schema({
   },
   habits: [habitSchema]
 })
-=======
->>>>>>> bce4a278793cbdb97a5e83115b7a77d6658cd687
 
 const userSchema = new mongoose.Schema({
   username: {
@@ -63,12 +60,8 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: [true, 'password required'],
     minlength: [5, 'Password must be at least 5 characters'],
-<<<<<<< HEAD
   },
   games: [gameSchema]
-=======
-  }
->>>>>>> bce4a278793cbdb97a5e83115b7a77d6658cd687
 });
 
 userSchema.pre("save", async function(next){
