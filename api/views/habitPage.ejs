@@ -2,32 +2,32 @@
 <html lang="en">
 
 <head>
-   <%- include('partials/head'); -%>
-    <!-- favicon icon-->
-    <link rel="shortcut icon" href="/images/favicon.svg" type="img/svg+xml">
+    <%- include('partials/head'); -%>
+        <!-- favicon icon-->
+        <link rel="shortcut icon" href="/images/favicon.svg" type="img/svg+xml">
 
-    <!--google font link-->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&family=Poppins:wght@400;500;700&display=swap"
-        rel="stylesheet">
-    <!--bootstrap-->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
-    <!--custom css link-->
-   
-    <link rel="stylesheet" href="/css/style.css">
+        <!--google font link-->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&family=Poppins:wght@400;500;700&display=swap"
+            rel="stylesheet">
+        <!--bootstrap-->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+        <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+        <!--custom css link-->
 
-    <!--custom css-->
-    <link rel="stylesheet" href="/css/habits.css">
+        <link rel="stylesheet" href="/css/style.css">
+
+        <!--custom css-->
+        <link rel="stylesheet" href="/css/habits.css">
 </head>
 
 <body>
     <header class="header">
-        <%- include('partials/header'); -%>  
+        <%- include('partials/header'); -%>
     </header>
     <div class="container card-container">
         <h1 class="h2 habit-header">SELECT YOUR GAME!</h1>
@@ -35,8 +35,7 @@
             <div class="col-md-4">
                 <div class="column">
                     <div class="card text-center">
-                        <img class="card-img-top" src="/images/apex-login.jpg" alt="Card image"
-                            style="width:100%">
+                        <img class="card-img-top" src="/images/apex-login.jpg" alt="Card image" style="width:100%">
                         <div class="card-body">
                             <h4 class="card-title">APEX LEGENDS</h4>
                             <p class="card-text">Need to become a more disciplined APEX player? <br> Create your habit
@@ -65,8 +64,7 @@
             <div class="col-md-4">
                 <div class="column">
                     <div class="card text-center">
-                        <img class="card-img-top" src="/images/cs-go.jpeg" alt="Card image"
-                            style="width:100%">
+                        <img class="card-img-top" src="/images/cs-go.jpeg" alt="Card image" style="width:100%">
                         <div class="card-body">
                             <h4 class="card-title">APEX LEGENDS</h4>
                             <p class="card-text">Need to become a more disciplined CS:GO player? <br> Create your habit
@@ -80,46 +78,46 @@
         </div>
 
         <div class="container">
+            
             <h2 class="habith2">HABITS</h2>
-            <form class="add-habit">
-                <div class="checkboxes">
-                    <label for="apexL"><input id="apexL" type="checkbox"> <span>Apex Legends</span></label>
-                
-                    <label for="fortnite"><input id="fortnite"type="checkbox"> <span>Fortnite</span></label>
-                    <label for="csGo"><input id="csGo" type="checkbox"> <span>CS:GO</span></label>
-                </div>
-              <input
-                class="habit"
-                type="text"
-                name="habit"
-                placeholder="Enter Habit Name"
-                required
-              />
-              <input
-                type="number"
-                name="reps"
-                placeholder="# of Repetitions"
-                min="1"
-                required
-              />
-              <input type="submit" value="+ Add Habit" />
-              
-            </form>
-      
-            <ul class="habits">
-              <li>Loading...</li>
-            </ul>
-          </div>
-          </div>
-          <script defer src="/js/habits.js"></script>
+            <h4 class="text-center">Games:</h4>
+                <div class="checkboxes col-md text-center custom-control custom-radio">
+                    <label class="radio text-center">
+                        <input type="radio" name="game" id="ApexL" value="ApexL">
+                        Apex Legends
+                    </label>
+                    <label class="radio text-center">
+                        <input type="radio" name="game" id="fortnite" value="fortnite">
+                        Fortnite
+                    </label>
+                    <label class="radio text-center">
+                        <input type="radio" name="game" id="CSGO" value="CS:GO">
+                        CS:GO
+                    </label>
 
-        <!--ionicon link-->
-        <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-        <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
-        
-        ></script>
-      
-        <%- include ('partials/footer.ejs'); -%>
+                
+
+                </div>
+            <form class="add-habit">
+                
+                <input class="habit" type="text" name="habit" placeholder="Enter Habit Name" required />
+                <input type="number" name="reps" placeholder="# of Repetitions" min="1" required />
+                <input type="submit" value="+ Add Habit" />
+
+            </form>
+
+            <ul class="habits">
+                <li>Loading...</li>
+            </ul>
+        </div>
+    </div>
+    <script defer src="/js/habits.js"></script>
+
+    <!--ionicon link-->
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+    <%- include ('partials/footer.ejs'); -%>
 </body>
 
 </html>
