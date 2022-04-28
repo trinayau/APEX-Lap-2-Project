@@ -40,6 +40,8 @@ app.get('/habitPage', requireAuth, (req, res) => {
         })
     
 });
+//when u access /games/id, search for username/games/id and res.render('habitPage', games: result, title: result.gameName)
+//change 
 
 app.post('/habits', (req, res) => {
     const habit = new Habit(req.body);
@@ -51,7 +53,7 @@ app.post('/habits', (req, res) => {
         })
 }) 
 
-app.get('/gamePage', (req,res) => {
+app.get('/gamePage', requireAuth, (req,res) => {
     const token = req.headers.cookie.split('=')[1];
     const decodedToken = jwt.decode(token);
     User.findOne({username: decodedToken.id})
