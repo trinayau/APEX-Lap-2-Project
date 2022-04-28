@@ -22,7 +22,7 @@ async function createGame(req, res) {
 async function showGameById(req, res) {
     console.log(req.body)
     try {
-        const game = await Game.findById(req.body, req.params.id);
+        const game = await Game.findOne({gameId: req.params.id});
         res.status(200).json(game);
     } catch (err) {
         res.status(404).json({ err })

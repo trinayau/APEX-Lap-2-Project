@@ -53,3 +53,8 @@ async function showGames(decodedId) {
 
 {/* 
   */}
+
+  //make get req to gameId
+  //getAllHabits -> if habits, send them, if not, dont
+  //res./game/id
+  //element.setAttribute = habit.id

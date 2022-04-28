@@ -36,7 +36,7 @@
             <div class="habits content">
                 <% if (games.length > 0) { %> 
                     <% games.forEach(game => { %>
-                    <h3 class="habit-title"><%= game.gameName %></h3>
+                    <a href= "/games/<%= game.gameId %>"><h3 class="habit-title" id=<%= game.gameId %>><%= game.gameName %></h3></a>
                     <% }) %>
                     <%  %>
                  <% } else { %>
@@ -45,7 +45,9 @@
             </div> 
             <br>
         </div>
+        <div class="d-flex justify-content-center text-center">
         <button id="addNewGame" class="btn btn-primary text-center"  onclick="toggleGameDiv()">Add new game!</button>
+    </div>
         <div class="game-cards" id="gameDiv" style="display: none">
         <h1 class="h2 habit-header">SELECT YOUR GAME!</h1>
         <div class="row">
@@ -58,7 +60,7 @@
                             <p class="card-text">Need to become a more disciplined APEX player? <br> Create your habit
                                 now!
                             </p>
-                            <a href="#" class="btn">View habits</a> <!--Click this, make post request to server to -->
+                            <a href="" class="btn">View habits</a> <!--Click this, make post request to server to -->
                         </div>
                     </div>
                 </div>
