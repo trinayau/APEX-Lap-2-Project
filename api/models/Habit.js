@@ -32,10 +32,11 @@ module.exports = class Habit {
             try {
                 const game = await Game.findById(username, parseInt(gameId));
                 const habits = game.habits;
+                console.log(habits);
                 resolve(
                     {
                         habits: habits,
-                        gameName: game.gameName
+                        title: game.gameName
                     });
             } catch (err) {
                 reject(`Habits with gameID: ${id} not found`);
