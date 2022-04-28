@@ -1,16 +1,23 @@
 const Schema = require('./Schema');
-const Habit = require('./Habit');
+const User = require('./User');
 
 module.exports = class Game {
     constructor() { }
 
-    static get all() {
-        const cursor = db.collection('games').find({});
-        //const cursor = Schema.Game.find({});
-        return cursor
+    static async getAllGames(username) {
+        return new Promise(async (resolve, reject) => {
+            try {
+                const user = await User.findByUsername(username);
+                const games = user['games'];
+                resolve(games);
+            } catch (err) {
+                console.log(err);
+                reject(`Games for ${username} could not be found`);
+            }
+        })
     }
 
-    static async create(data) {
+    static async create(username, data) {
         return new Promise(async (resolve, reject) => {
             try {
                 const gameParams = {
@@ -19,7 +26,7 @@ module.exports = class Game {
                 }
                 const game = await Schema.Game.create(gameParams);
                 await Schema.User.findOneAndUpdate(
-                    { username: data['username'].toLowerCase() },
+                    { username: username.toLowerCase() },
                     { $push: { games: game } })
                 resolve(game);
             } catch (err) {
@@ -29,39 +36,15 @@ module.exports = class Game {
         });
     };
 
-    static async findById(data, id) {
+    static async findById(username, gameId) {
         return new Promise(async (resolve, reject) => {
             try {
-                const user = await Schema.User.findOne({ username: data['username'].toLowerCase() });
-                const game = user.games.filter(gameObj => gameObj.gameId === parseInt(id));
-                resolve(game);
+                const user = await User.findByUsername(username);
+                const game = user.games.filter(gameObj => gameObj.gameId === parseInt(gameId));
+                resolve(game[0]);
             } catch (err) {
                 console.log(err)
-                reject(`game with id: ${id} not found`);
-            }
-        });
-    }
-
-    async updateById(id) {
-        return new Promise(async (resolve, reject) => {
-            try {
-                const game = findById(id);
-                const updated = db.collection('games').update({ gameId: id }, { $set: { "habits": id } });
-                //resolve (result);
-            } catch (err) {
-                reject('object could not be updated');
-            }
-        });
-    };
-
-    static async getHabits(id) {
-        return new Promise(async (resolve, reject) => {
-            try {
-                const game = Schema.Game.findOne({ gameId: id });
-                const habits = game.habits;
-                resolve(habits);
-            } catch (err) {
-                reject(`game with id: ${id} not found`);
+                reject(`game with id: ${gameId} not found`);
             }
         });
     }

@@ -1,12 +1,25 @@
 const Schema = require('./Schema');
+const mongoose = require('mongoose');
+const Game = require('./Game');
+const Habit = require('./Habit');
 
 module.exports = class Habit {
-    constructor() {}
+    constructor() { }
 
-    static async create(data) {
+    static async create(username, gameId, data) {
         return new Promise(async (resolve, reject) => {
             try {
                 const habit = await Schema.Habit.create(data);
+                console.log(parseInt(gameId))
+                console.log(username)
+                const result = await Schema.User.updateOne({
+                    username: username.toLowerCase(),
+                    "games.gameId": parseInt(gameId)
+                }, {
+                    "$push": {
+                        "games.$.habits": habit
+                    }
+                })
                 resolve(habit);
             } catch (err) {
                 console.log(err)
@@ -15,37 +28,32 @@ module.exports = class Habit {
         });
     };
 
-    static async findById(game, id) {
+    static async getAllHabits(username, gameId) {
         return new Promise(async (resolve, reject) => {
             try {
-                const habit = game.Schema.Game.findOne({ habitId: id });
-                resolve(habit);
+                const game = await Game.findById(username, parseInt(gameId));
+                const habits = game.habits;
+                resolve(
+                    {
+                        habits: habits,
+                        title: game.gameName,
+                        gameId: game.gameId
+                    });
             } catch (err) {
-                reject(`Habit with id: ${id} not found`);
+                reject(`Habits with gameID: ${id} not found`);
             }
         });
     }
 
-    static async update(objectData) {
+    static async delete(habitId) {
         return new Promise(async (resolve, reject) => {
             try {
-                //const {id, title, etc} = objectData
-                //let result = await // insert into database [id, title, etc]
-                //resolve (result);
+                const deleted = await Schema.Habit.deleteOne({ _id: habitId })
+                // const deleted = await Schema.Habit.deleteOne({ _id: mongoose.Types.ObjectId(habitId) })
+                resolve(deleted);
             } catch (err) {
-                reject('object could not be updated');
-            }
-        });
-    };
-
-    async delete(objectData) {
-        return new Promise(async (resolve, reject) => {
-            try {
-                const deleted = await db.collection('habits').deleteOne({ status: this.id });
-                //const deleted = Schema.Habit.deleteOne({ status: this.id });
-                resolve (deleted);
-            } catch (err) {
-                reject('object could not be updated');
+                console.log(err)
+                reject('Habit could not be deleted');
             }
         });
     };

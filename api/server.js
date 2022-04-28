@@ -3,6 +3,9 @@ const cors = require('cors');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const { requireAuth, checkUser, jwt } = require('./middleware/authMiddleware');
+const bodyParser = require("body-parser");
+
+
 
 const app = express();
 
@@ -19,6 +22,8 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.urlencoded({extended:true}))
+app.use(bodyParser.text());
+
 
 
 
@@ -32,7 +37,6 @@ app.get('/habitPage', requireAuth, (req, res) => {
     const decodedToken = jwt.decode(token);
     User.findOne({username: decodedToken.id})
         .then((result) => {
-            console.log(result)
             res.render('habitPage', { title: 'Habits', user: result})
         })
         .catch((err) => {
@@ -40,6 +44,8 @@ app.get('/habitPage', requireAuth, (req, res) => {
         })
     
 });
+//when u access /games/id, search for username/games/id and res.render('habitPage', games: result, title: result.gameName)
+//change 
 
 app.post('/habits', (req, res) => {
     const habit = new Habit(req.body);
@@ -51,13 +57,25 @@ app.post('/habits', (req, res) => {
         })
 }) 
 
-app.get('/gamePage', (req,res) => {
+app.get('/gamePage', requireAuth, (req,res) => {
     const token = req.headers.cookie.split('=')[1];
     const decodedToken = jwt.decode(token);
     User.findOne({username: decodedToken.id})
         .then((result) => {
-            console.log(result.games)
             res.render('games', { title: 'Habits', games: result.games})
+        })
+        .catch((err) => {
+            console.log(err)
+        })
+  
+})
+
+app.get('/onlyhabits', requireAuth, (req,res) => {
+    const token = req.headers.cookie.split('=')[1];
+    const decodedToken = jwt.decode(token);
+    Habit.find({username: decodedToken.id})
+        .then((result) => {
+            res.render('onlyHabits', { title: 'Habits'})
         })
         .catch((err) => {
             console.log(err)

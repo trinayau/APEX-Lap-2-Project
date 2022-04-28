@@ -7,7 +7,7 @@ module.exports = class User {
     static async findByEmail(email) {
         return new Promise(async (resolve, reject) => {
             try {
-                const user = Schema.User.findOne({ email: email });
+                const user = Schema.User.findOne({ email: email.toLowerCase() });
                 resolve(user);
             } catch (err) {
                 reject(`User with email: ${email} not found`);
@@ -18,7 +18,7 @@ module.exports = class User {
     static async findByUsername(username) {
         return new Promise(async (resolve, reject) => {
             try {
-                const user = Schema.User.findOne({ username: username });
+                const user = Schema.User.findOne({ username: username.toLowerCase() });
                 resolve(user);
             } catch (err) {
                 reject(`User with username: ${username} not found`);
