@@ -1,39 +1,29 @@
+console.log(window.location.href)
 const addHabits = document.querySelector(".add-habit");
 const habitsList = document.querySelector(".habits");
 const habits = JSON.parse(localStorage.getItem("habits")) || [];
+const habitForm = document.querySelector("form");
 
-function addHabit(e) { //POST request to habit
+habitForm.addEventListener('submit',(e) => { //POST request to habit
   e.preventDefault();
-  const text = this.querySelector("[name=habit]").value;
-  const totalCounts = +this.querySelector("[name=reps]").value;
+ 
   const habit = {
-    text: text,
-    reps: 0,
-    totalCounts: totalCounts,
-    completed: false,
-    maxStreak: 0
+    habitName: e.target['habitName'].value.trim(),
+    habitMaxReps: e.target['habitMaxReps'].value.trim(),
   };
-
-  habits.push(habit);
-  listHabits(habits, habitsList);
-  localStorage.setItem("habits", JSON.stringify(habits));
-  this.reset();
   console.log(habit);
-}
+  const options = {
+    method: 'POST',
+    body: JSON.stringify(habit),
+    header: { "Content-Type": "application/json" }
+  }
 
-// function listHabits(habit = [], habitsList) {
-//   habitsList.innerHTML = habits.map((habit, i) => {
-//       return `
-//             <li>
-//             <input type="checkbox" data-index=${i} id="habit${i}" ${
-//         habit.completed ? "checked" : ""
-//       } />
-//             <label for="habit${i}" class="d-flex flex-wrap align-content-between"> ${habit.text}<div class="ml-3">${habit.reps}/${habit.totalCounts}</div><div class="ml-3"> Max Streak: ${habit.maxStreak}</div></label>
-//         <button class="delete" data-index=${i} id="delete${i}">Delete</button>
-//         </li>`;
-//     })
-//     .join("");
-// }
+  // habitForm.reset();
+  
+  fetch(`${window.location.href}`, options)
+    // .then(location.reload())
+})
+
 
 // Toggle If Complete
 function toggleCompleted(e) {
@@ -101,4 +91,8 @@ async function deleteHabit(e) {
 }
 
 //create element - set custom attribute of actual mongoose id
-// 
+async function createHabit(e) {
+
+}
+//update streak
+//

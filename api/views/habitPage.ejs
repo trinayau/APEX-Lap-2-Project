@@ -32,16 +32,17 @@
         <h4 class="text-center h3"><%= title.toUpperCase() %></h4>
         <br />
         <br />
-        <h2 class="habith2">HABITS</h2>
+        <h2 class="habith2 h3">HABITS</h2>
         <div class="habits content fluid-container">
           <% if (habits.length > 0) { %> <% habits.forEach(habit => { %>
+            <div class="habit-container mb-5">
           <h3 class="habit-title" habitid="<%= habit._id %>">
             <%= habit.habitName %>
           </h3>
           <div class="row text-left">
             <div class="col-3">
               <p class="snippet">
-                Reps: <%= habit.habitReps %>/<%=habit.habitMaxReps%> <br />
+                Reps: <%= habit.habitReps %>/<%=habit.habitMaxReps%> <i class="fa-solid fa-plus ml-3 add-icon"></i><br />
               </p>
             </div>
 
@@ -68,38 +69,41 @@
             <% }%>
             <div class="col-3">Streak: <%=habit.habitStreak %></div>
             <div class="col-3">
-                <i class="fa-solid fa-plus"></i>
-              <i class="fa-solid fa-x"></i>
+                
+              <i class="fa-solid fa-x delete-icon h4"></i>
             </div>
           </div>
+        </div>
           <% }) %> <% } else { %>
           <p>There are no habits to display</p>
           <% } %>
         </div>
         <br />
-        <form class="add-habit" action="/habits" method="POST">
+        <form class="add-habit">
           <input
             class="habit"
             type="text"
             name="habitName"
+            id="habitName"
             placeholder="Enter Habit Name"
             required
           />
           <input
             type="number"
             name="habitMaxReps"
+            id="habitMaxReps"
             placeholder="# of Repetitions"
             min="1"
             required
           />
-          <input type="submit" value="+ Add Habit" />
+          <input type="submit" value="+ Add Habit"/>
         </form>
 
         <ul class="habits"></ul>
       </div>
       <div></div>
     </div>
-    <!-- <script defer src="/js/habits.js"></script> -->
+    <script defer src="/js/habits.js"></script>
 
     <!--ionicon link-->
     <script

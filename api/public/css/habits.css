@@ -214,5 +214,25 @@ border: 0;
 border-radius: 10px;
 }
 
+.habit-container {
+  background-color: rgba(210, 215, 211, 0.9);
+  border-radius: 15px;
+  padding: 10px;
+}
 /** Toggle new game**/
+/*Plus*/
+.add-icon {
+  transition: var(--transition-2);
+  font-size: 25px;
+}
+.add-icon:hover {
+  color: var(--orange)
+}
 
+.delete-icon {
+  transition: var(--transition-2)
+}
+
+.delete-icon:hover {
+  color: var(--orange)
+}

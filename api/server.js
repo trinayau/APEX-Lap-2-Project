@@ -32,7 +32,6 @@ app.get('/habitPage', requireAuth, (req, res) => {
     const decodedToken = jwt.decode(token);
     User.findOne({username: decodedToken.id})
         .then((result) => {
-            console.log(result)
             res.render('habitPage', { title: 'Habits', user: result})
         })
         .catch((err) => {
