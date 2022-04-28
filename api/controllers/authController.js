@@ -58,7 +58,7 @@ async function addUser(req, res) {
     try {
         await User.create({ username, password, email })
         const token = createToken(username);
-        res.cookie('jwt', token, { httpOnly: true, maxAge: jwtMaxAge * 1000 }) //3 days
+        res.cookie('jwt', token, { httpOnly: false, maxAge: jwtMaxAge * 1000 }) //3 days
         res.status(201).json({ user: username });
     }
     catch (err) {
@@ -84,7 +84,7 @@ async function loginUser(req, res) {
     try {
         const user = await User.login(email, password);
         const token = createToken(user.username);
-        res.cookie('jwt', token, { httpOnly: true, maxAge: jwtMaxAge * 1000 }) //3 days
+        res.cookie('jwt', token, { httpOnly: false, maxAge: jwtMaxAge * 1000 }) //3 days
         res.status(200).json({ user: user.username })
     } catch (err) {
         const errors = handleErrors(err);

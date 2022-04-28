@@ -27,7 +27,6 @@ const checkUser = (req, res, next) => {
         res.locals.user = null;
         next();
       } else {
-        console.log(decodedToken)
         res.locals.user = await User.findByUsername(decodedToken.id);
         next();
       }
@@ -38,4 +37,4 @@ const checkUser = (req, res, next) => {
   }
 };
 
-module.exports = { requireAuth, checkUser };
+module.exports = { requireAuth, checkUser, jwt};
