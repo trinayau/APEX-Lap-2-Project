@@ -46,9 +46,10 @@ const createToken = (id) => {
 async function getSignup(req, res) {
     try {
         res.render('signup', {title: 'Sign Up'})
+        res.status(200)
     } catch (err) {
         console.log(err)
-        res.status(422).json({ err })
+        res.status(500).json({ err })
     }
 }
 
@@ -63,7 +64,7 @@ async function addUser(req, res) {
     }
     catch (err) {
         const errors = handleErrors(err);
-        res.status(422).json({ errors });
+        res.status(422).json({ err });
     }
 }
 
@@ -88,15 +89,21 @@ async function loginUser(req, res) {
         res.status(200).json({ user: user.username })
     } catch (err) {
         const errors = handleErrors(err);
-        res.status(422).json({ errors });
+        res.status(422).json({ err });
     }
 }
 
 //logout get
 async function getLogout(req, res) {
-    //replacing jwt with empty cookie with 1 millisecond expiration
-    res.cookie('jwt', '', { maxAge: 1 });
-    res.redirect('/');
+    try {
+        //replacing jwt with empty cookie with 1 millisecond expiration
+        res.cookie('jwt', '', { maxAge: 1 });
+        res.redirect('/');
+        res.status(204)
+    } catch (err) {
+        console.log(err)
+        res.status(406).json({ err })
+    }    
 }
 
 
