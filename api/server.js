@@ -53,7 +53,7 @@ app.post('/habits', (req, res) => {
         })
 }) 
 
-app.get('/gamePage', (req,res) => {
+app.get('/gamePage', requireAuth, (req,res) => {
     const token = req.headers.cookie.split('=')[1];
     const decodedToken = jwt.decode(token);
     User.findOne({username: decodedToken.id})
