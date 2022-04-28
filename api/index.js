@@ -2,7 +2,7 @@ const server = require('./server');
 const axios = require('axios');
 const mongoose = require('mongoose');
 
-// const mongodbURI = process.env.DB_CONNECTION;
+//const mongodbURI = process.env.DB_CONNECTION;
 const mongodbURI = 'mongodb+srv://apex-test:Test12@cluster0.8m7wy.mongodb.net/myFirstDatabase?retryWrites=true&w=majority'
 const port = process.env.PORT || 3000;
 
