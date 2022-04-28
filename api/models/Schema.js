@@ -4,6 +4,10 @@ const { isEmail } = require('validator');
 const uniqueValidator = require('mongoose-unique-validator');
 
 const habitSchema = new mongoose.Schema({
+  userId: {
+    type: Number,
+    required: true,
+  },
   habitName: {
     type: String,
     required: true,
