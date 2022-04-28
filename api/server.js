@@ -67,11 +67,13 @@ app.get('/gamePage', (req,res) => {
 
 app.use(authRoutes);
 
+
+app.use('/search', searchRoutes);
+
 app.use((req, res) => {
     res.status(404).render('404', {
         title: "404"
     })
 })
-//app.use('/search', searchRoutes);
 
 module.exports = app;
