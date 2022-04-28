@@ -11,12 +11,14 @@ const habitSchema = new mongoose.Schema({
   },
   habitReps: {
     type: Number,
-    required: true
+    // min: [0, 'Amount of repetitions must be higher than -1'],
+    default: 0,
+    required: false
   },
   habitMaxReps: {
     type: Number,
     required: true,
-    min: [1, 'Amount of repetitions must be higher than 0']
+    min: [1, 'Amount of max repetitions must be higher than 0']
   },
   habitComplete: {
     type: Boolean,
@@ -24,11 +26,16 @@ const habitSchema = new mongoose.Schema({
   },
   habitStreak: {
     type: Number,
+    min: [0, 'Amount of streak must be higher than -1'],
     default: 0
   }
-})
+});
 
 const gameSchema = new mongoose.Schema({
+  gameId: {
+    type: Number,
+    required: true,
+  },
   gameName: {
     type: String,
     required: true,
@@ -41,9 +48,10 @@ const gameSchema = new mongoose.Schema({
   },
   habits: {
     type: [habitSchema],
-    required: false
+    required: false,
+    default: []
   }
-})
+});
 
 const userSchema = new mongoose.Schema({
   username: {
@@ -67,6 +75,7 @@ const userSchema = new mongoose.Schema({
   },
   games: {
     type: [gameSchema],
+    default: [],
     required: false
   }
 });

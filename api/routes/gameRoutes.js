@@ -1,27 +1,16 @@
 const express = require('express');
 const router = express.Router();
 const gameController = require('../controllers/gameController')
-
-
-// router.get('/', objectController.index)
-// router.get('/:id', objectController.show)
-// router.post('/', objectController.create)
-// router.delete('/:id', objectController.destroy)
+const habitController = require('../controllers/habitController')
 
 router.route('/')
-    .get(gameController.index)
-    .post(gameController.create)
+    .get(gameController.getAll)         //done
+    .post(gameController.createGame)    //done
 
 router.route('/:id')
-    .get(gameController.show)
-    .post(gameController.create)
-    .put(gameController.update)
+    .get(gameController.showGameById)   //done           
+    .post(habitController.createHabit)
+    .delete(habitController.deleteHabit)    //in progress
 
-// router.route('/users')
-//     .get(objectController.index)
-//     .post(objectController.addUser)
-
-// router.route('/users/login')
-//     .post(objectController.getUser)
 
 module.exports = router;

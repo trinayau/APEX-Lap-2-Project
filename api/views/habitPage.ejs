@@ -30,53 +30,6 @@
         <%- include('partials/header'); -%>
     </header>
     <div class="container card-container">
-        <h1 class="h2 habit-header">SELECT YOUR GAME!</h1>
-        <div class="row">
-            <div class="col-md-4">
-                <div class="column">
-                    <div class="card text-center">
-                        <img class="card-img-top" src="/images/apex-login.jpg" alt="Card image" style="width:100%">
-                        <div class="card-body">
-                            <h4 class="card-title">APEX LEGENDS</h4>
-                            <p class="card-text">Need to become a more disciplined APEX player? <br> Create your habit
-                                now!
-                            </p>
-                            <a href="#" class="btn">View habits</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="column">
-                    <div class="card text-center">
-                        <img class="card-img-top" src="/images/fortnite.jpeg" alt="Card image">
-                        <div class="card-body">
-                            <h4 class="card-title">APEX LEGENDS</h4>
-                            <p class="card-text">Need to become a more disciplined FORTNITE player? <br> Create your
-                                habit
-                                now!
-                            </p>
-                            <a href="#" class="btn">View habits</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="column">
-                    <div class="card text-center">
-                        <img class="card-img-top" src="/images/cs-go.jpeg" alt="Card image" style="width:100%">
-                        <div class="card-body">
-                            <h4 class="card-title">APEX LEGENDS</h4>
-                            <p class="card-text">Need to become a more disciplined CS:GO player? <br> Create your habit
-                                now!
-                            </p>
-                            <a href="#" class="btn">View habits</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
         <div class="container">
             <h4 class="text-center">Games:</h4> <br>
             
@@ -84,32 +37,21 @@
             <h2 class="habith2">HABITS</h2>
 
             <br>
-            <form class="add-habit">
-
-                <input class="habit" type="text" name="habit" placeholder="Enter Habit Name" required />
-                <input type="number" name="reps" placeholder="# of Repetitions" min="1" required />
-                <input class="habit" type="text" name="habit" placeholder="Enter Game Name" required />
+            <form class="add-habit" action="/habits" method="POST">
+                <input class="habit" type="text" name="habitName" placeholder="Enter Habit Name" required />
+                <input type="number" name="habitMaxReps"placeholder="# of Repetitions" min="1" required />
                 <input type="submit" value="+ Add Habit" />
-
             </form>
 
             <ul class="habits">
          
             </ul>
         </div>
-        <div class="habits content">
-            <h2>Habits</h2>
-            <% if (habits.length > 0) { %> 
-                <% habits.forEach(habit => { %>
-                <h3 class="habit-title"><%= habit.habitName %></h3>
-                <p class="snippet"><%= habit.habitReps %>/<%=habit.habitMaxReps%> Complete: <%= habit.habitComplete %> Streak: <%=habit.habitStreak %></p>
-                <% }) %>
-             <% } else { %>
-                <p>There are no habits to display</p>
-                <% } %>
+        <div>
+       
         </div>
     </div>
-    <script defer src="/js/habits.js"></script>
+    <!-- <script defer src="/js/habits.js"></script> -->
 
     <!--ionicon link-->
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
