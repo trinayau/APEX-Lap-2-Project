@@ -1,5 +1,4 @@
 const Game = require('../models/Game');
-const Habit = require('../models/Habit');
 
 async function getAll(req, res) {
     try {
@@ -12,9 +11,8 @@ async function getAll(req, res) {
 
 async function createGame(req, res) {
     try {
-        const { gameId, gameName } = req.body;
-        await Game.create({ gameId, gameName })
-        res.status(201).json({ game: gameName });
+        await Game.create(req.body)
+        res.status(201).json({ game: req.body.gameName });
     } catch (err) {
         console.log(err)
         res.status(422).json({ err })
@@ -22,9 +20,10 @@ async function createGame(req, res) {
 }
 
 async function showGameById(req, res) {
+    console.log(req.body)
     try {
-        const game = await Game.getById(req.params.id);
-        res.status(200).json(game)
+        const game = await Game.findOne({gameId: req.params.id});
+        res.status(200).json(game);
     } catch (err) {
         res.status(404).json({ err })
         console.log(err)
@@ -33,8 +32,8 @@ async function showGameById(req, res) {
 
 async function updateGame(req, res) {
     try {
-        const game = await Game.getById(req.params.id);
-        const resp = await game.update();
+        const game = await Game.findById(req.body, req.params.id);
+        const resp = await Game.update();
         res.status(204).json(resp)
     } catch (err) {
         console.log(err)

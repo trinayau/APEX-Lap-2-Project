@@ -11,8 +11,9 @@ const habitSchema = new mongoose.Schema({
   },
   habitReps: {
     type: Number,
-    min: [0, 'Amount of repetitions must be higher than -1'],
-    required: true
+    // min: [0, 'Amount of repetitions must be higher than -1'],
+    default: 0,
+    required: false
   },
   habitMaxReps: {
     type: Number,
@@ -91,4 +92,4 @@ const User = mongoose.model('user', userSchema);
 const Game = mongoose.model('game', gameSchema);
 const Habit = mongoose.model('habit', habitSchema);
 
-module.exports = {User, Game, Habit};
+module.exports = { User, Game, Habit };
