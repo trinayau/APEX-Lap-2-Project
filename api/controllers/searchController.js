@@ -9,7 +9,6 @@ async function searchGames(req, res) {
             }
         })
             .then(resp => {
-                console.log(resp.data)
                 res.json(resp.data)
             })
             .catch(err => console.log(err))

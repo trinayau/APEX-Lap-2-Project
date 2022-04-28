@@ -9,7 +9,6 @@ module.exports = class Game {
             try {
                 const user = await User.findByUsername(username);
                 const games = user['games'];
-                console.log(user)
                 resolve(games);
             } catch (err) {
                 console.log(err);
