@@ -1,0 +1,14 @@
+<div class="habits content">
+    <h2>Habits</h2>
+    <% if (habits.length > 0) { %> 
+        <% habits.forEach(habit => { %>
+        <h3 class="habit-title"><%= habit.title %></h3>
+        <p class="snippet"><%= habit.snippet %></p>
+        <% }) %>
+     <% } else { %>
+        <p>There are no habits to display</p>
+        <% } %>
+
+    
+}
+</div>
