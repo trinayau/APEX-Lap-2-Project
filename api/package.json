@@ -3,7 +3,7 @@
     "scripts": {
         "start": "node index.js",
         "dev": "nodemon --legacy-watch",
-        "test": "jest --setupFiles ./tests/integration/config.js --watchAll --detectOpenHandles --runInBand --verbose",
+        "test": "jest tests --watchAll --detectOpenHandles --runInBand --verbose",
         "unitTests": "jest --testPathPattern=/unit/ --watchAll --verbose",
         "coverage": "jest --testPathPattern=/unit/ --coverage"
     },
@@ -21,7 +21,9 @@
         "supertest": "^4.0.2"
     },
     "dependencies": {
+        "axios": "^0.27.1",
         "bcrypt": "^5.0.1",
+        "body-parser": "^1.20.0",
         "cookie-parser": "^1.4.6",
         "cors": "^2.8.5",
         "ejs": "^3.1.7",
@@ -30,7 +32,6 @@
         "mongoose": "^6.3.1",
         "mongoose-unique-validator": "^3.0.0",
         "path": "^0.12.7",
-        "validator": "^13.7.0",
-        "axios": "^0.27.1"
+        "validator": "^13.7.0"
     }
 }

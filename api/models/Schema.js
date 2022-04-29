@@ -4,6 +4,10 @@ const { isEmail } = require('validator');
 const uniqueValidator = require('mongoose-unique-validator');
 
 const habitSchema = new mongoose.Schema({
+  userId: {
+    type: Number,
+    required: true,
+  },
   habitName: {
     type: String,
     required: true,
@@ -11,9 +15,9 @@ const habitSchema = new mongoose.Schema({
   },
   habitReps: {
     type: Number,
-    // min: [0, 'Amount of repetitions must be higher than -1'],
-    default: 0,
-    required: false
+    min: [0, 'Amount of repetitions must be higher than -1'],
+    required: false,
+    default: 0
   },
   habitMaxReps: {
     type: Number,

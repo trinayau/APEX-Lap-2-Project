@@ -1,8 +1,9 @@
 const server = require('./server');
 const axios = require('axios');
 const mongoose = require('mongoose');
+const Habit = require('./models/Habit');
 
-// const mongodbURI = process.env.DB_CONNECTION;
+//const mongodbURI = process.env.DB_CONNECTION;
 const mongodbURI = 'mongodb+srv://apex-test:Test12@cluster0.8m7wy.mongodb.net/myFirstDatabase?retryWrites=true&w=majority'
 const port = process.env.PORT || 3000;
 
@@ -19,6 +20,11 @@ mongoose.connect(mongodbURI, { useNewUrlParser: true, useUnifiedTopology: true }
                 process.env['ACCESS_TOKEN'] = resp.data['access_token'];
             })
         server.listen(port, () => console.log(`\nServer listening on port http://localhost:${port}\n`));
+
+        /*
+        setInterval(() => {
+            Habit.updateHabitStreaks();
+        }, 86400000);*/
     })
     .catch(err => console.log(err));
 

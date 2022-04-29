@@ -1,8 +1,10 @@
 const Game = require('../models/Game');
+const jwt = require('jsonwebtoken');
 
 async function getAll(req, res) {
     try {
-        const games = await Game.all;
+        const decodedToken = jwt.decode(req.headers['cookie'].split('=')[1]);
+        const games = await Game.getAllGames(decodedToken.id);
         res.status(200).json(games)
     } catch (err) {
         res.status(500).json({ err })
@@ -11,7 +13,8 @@ async function getAll(req, res) {
 
 async function createGame(req, res) {
     try {
-        await Game.create(req.body)
+        const decodedToken = jwt.decode(req.headers['cookie'].split('=')[1]);
+        await Game.create(decodedToken.id, req.body)
         res.status(201).json({ game: req.body.gameName });
     } catch (err) {
         console.log(err)
@@ -30,9 +33,12 @@ async function showGameById(req, res) {
     }
 }
 
+/*
+
 async function updateGame(req, res) {
     try {
-        const game = await Game.findById(req.body, req.params.id);
+        const decodedToken = jwt.decode(req.headers['cookie'].split('=')[1]);
+        const game = await Game.findById(decodedToken.id, req.params.id);
         const resp = await Game.update();
         res.status(204).json(resp)
     } catch (err) {
@@ -50,26 +56,6 @@ async function getHabits(req, res) {
         console.log(err)
     }
 }
+*/
 
-async function createHabit(req, res) {
-    try {
-        const { habitName, habitReps, habitMaxReps, habitComplete, habitStreak } = req.body;
-        await Habit.create({ habitName, habitReps, habitMaxReps, habitComplete, habitStreak })
-        res.status(201).json({ habit: habitName });
-    } catch (err) {
-        console.log(err)
-        res.status(422).json({ err })
-    }
-}
-
-async function deleteHabit(req, res) {
-    try {
-        const habits = await Habit.delete(req.params.id2);
-        res.status(201).json({ habit: habitName });
-    } catch (err) {
-        console.log(err)
-        res.status(422).json({ err })
-    }
-}
-
-module.exports = { getAll, showGameById, createGame, updateGame, getHabits, createHabit, deleteHabit}
+module.exports = { getAll, showGameById, createGame }

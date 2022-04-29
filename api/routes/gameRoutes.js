@@ -8,9 +8,9 @@ router.route('/')
     .post(gameController.createGame)    //done
 
 router.route('/:id')
-    .get(gameController.showGameById)   //done           
-    .post(habitController.createHabit)
-    .delete(habitController.deleteHabit)    //in progress
-
+    .get(habitController.getAllHabits)  //done           
+    .post(habitController.createHabit) //done
+    .put(habitController.updateHabit) 
+    .delete(habitController.deleteHabit) //done
 
 module.exports = router;
