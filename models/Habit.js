@@ -31,12 +31,12 @@ module.exports = class Habit {
             try {
                 const user = await Schema.User.findOne({username: username});
                 const game = user['games'].filter(game => game['gameId'] === parseInt(gameId));
-                const habits = game['habits'];
+                const habits = game[0]['habits'];
                 resolve(
                     {
                         habits: habits,
-                        title: game['gameName'],
-                        gameId: game['gameId']
+                        title: game[0]['gameName'],
+                        gameId: game[0]['gameId']
                     });
             } catch (err) {
                 reject(`Habits with gameID: ${gameId} not found`);
