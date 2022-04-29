@@ -25,7 +25,7 @@ module.exports = class Game {
                     gameId: data.gameId,
                     gameName: data.gameName
                 }
-                const game = await Schema.Game.create(gameParams);
+                const game = await new Schema.Game(gameParams);
                 await Schema.User.findOneAndUpdate(
                     { username: username.toLowerCase() },
                     { $push: { games: game } })

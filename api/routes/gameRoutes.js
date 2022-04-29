@@ -9,7 +9,8 @@ router.route('/')
 
 router.route('/:id')
     .get(habitController.getAllHabits)  //done           
-    .post(habitController.createHabit) // done
-    .delete(habitController.deleteHabit)    //done
+    .post(habitController.createHabit) //done
+    .put(habitController.updateHabit) 
+    .delete(habitController.deleteHabit) //done
 
 module.exports = router;
