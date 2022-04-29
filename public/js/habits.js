@@ -4,13 +4,62 @@ const habitsList = document.querySelector(".habits");
 const habits = JSON.parse(localStorage.getItem("habits")) || [];
 const habitForm = document.querySelector("form");
 const deleteButtons = document.querySelectorAll(".deleteButton")
+const addButtons = document.querySelectorAll(".addButton")
+const minusButtons = document.querySelectorAll(".minusButton")
+
+minusButtons.forEach((button) => {
+  button.addEventListener('click', async() => {
+    console.log(button.id);
+    console.log(window.location.href.toString().split('/').at(-1).replace(/[^a-zA-Z0-9 ]/g, ''))
+    const habit = {
+          habitId: button.id, //id of habit
+          habitChange: -1 //or -1 for reduce
+      }
+      try {
+        const options = {
+            method: 'PUT',
+            header: { "Content-Type": "application/json" },
+            body: JSON.stringify(habit)
+        }
+        const r = await fetch(`${window.location.href}`, options)
+        window.location.reload()
+    } catch (err) {
+        console.log(err)
+    }
+
+  })
+})
+
+addButtons.forEach((button) => {
+  button.addEventListener('click', async() => {
+    console.log(button.id);
+    console.log(window.location.href.toString().split('/').at(-1).replace(/[^a-zA-Z0-9 ]/g, ''))
+    const habit = {
+          habitId: button.id, //id of habit
+          habitChange: 1 //or -1 for reduce
+      }
+      try {
+        const options = {
+            method: 'PUT',
+            header: { "Content-Type": "application/json" },
+            body: JSON.stringify(habit)
+        }
+        const r = await fetch(`${window.location.href}`, options)
+        window.location.reload()
+    } catch (err) {
+        console.log(err)
+    }
+
+  })
+})
 
 
  deleteButtons.forEach((button) => {
   button.addEventListener('click', async () => {
     console.log(button.id);
+    console.log(window.location.href.toString().split('/').at(-1).replace(/[^a-zA-Z0-9 ]/g, ''))
     const habit = {
-          id: button.id
+          habitId: button.id //id of habit
       }    
       try {
           const options = {
@@ -19,7 +68,7 @@ const deleteButtons = document.querySelectorAll(".deleteButton")
               body: JSON.stringify(habit)
           }
           const r = await fetch(`${window.location.href}`, options)
-          // window.location.reload()
+          window.location.reload()
     
       } catch (err) {
           console.log(err)

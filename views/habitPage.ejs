@@ -45,8 +45,12 @@
             <div class="row text-left">
               <div class="col-3">
                 <p class="snippet">
-                  Reps: <%= habit.habitReps %>/<%=habit.habitMaxReps%> <br />
+                  Reps: <%= habit.habitReps %>/<%=habit.habitMaxReps%>
+                  <button class="minusButton" id="<%= habit._id %>">
+                    <i class="fa-solid fa-minus minus-icon"></i>
+                  </button>
                   <button class="addButton" id="<%= habit._id %>">
+                    
                     <i class="fa-solid fa-plus add-icon"></i>
                   </button>
                 </p>
@@ -116,12 +120,15 @@
       const addButtons = document.querySelectorAll(".addButton");
       addButtons.forEach((button) => {
         button.addEventListener('click', () => {
-        
-        
           for (var oneHabit of habitEJS) {
             if (oneHabit._id == button.id) {
-              oneHabit.habitReps += 1;
-              console.log(oneHabit.habitReps)
+              //takes var habitChange: either -1 or +1
+              //method: PUT
+              const addedHabitId = oneHabit._id
+              const habit{
+                habitId: addedHabitId,
+
+              }
               console.log(`This is the item: ${oneHabit._id}`)
             }
           }

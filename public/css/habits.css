@@ -221,11 +221,22 @@ border-radius: 10px;
 }
 /** Toggle new game**/
 /*Plus*/
+
 .add-icon {
+  color: green;
+}
+
+.minus-icon {
+  color: red;
+}
+
+.add-icon,
+.minus-icon {
   transition: var(--transition-2);
   font-size: 25px;
 }
-.add-icon:hover {
+.add-icon:hover,
+.minus-icon:hover {
   color: var(--orange)
 }
 
@@ -236,3 +247,4 @@ border-radius: 10px;
 .delete-icon:hover {
   color: var(--orange)
 }
+
