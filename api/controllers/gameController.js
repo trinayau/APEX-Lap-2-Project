@@ -5,7 +5,6 @@ async function getAll(req, res) {
     try {
         const decodedToken = jwt.decode(req.headers['cookie'].split('=')[1]);
         const games = await Game.getAllGames(decodedToken.id);
-        console.log(games);
         res.status(200).json(games)
     } catch (err) {
         res.status(500).json({ err })

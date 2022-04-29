@@ -45,7 +45,7 @@ const createToken = (id) => {
 //signup get
 async function getSignup(req, res) {
     try {
-        res.render('signup', {title: 'Sign Up'})
+        res.render('signup', { title: 'Sign Up' })
         res.status(200)
     } catch (err) {
         console.log(err)
@@ -58,7 +58,7 @@ async function addUser(req, res) {
     const { username, password, email } = req.body;
     try {
         await User.create({ username, password, email })
-        const token = createToken(username);
+        const token = await createToken(username);
         res.cookie('jwt', token, { httpOnly: false, maxAge: jwtMaxAge * 1000 }) //3 days
         res.status(201).json({ user: username });
     }
@@ -72,7 +72,7 @@ async function addUser(req, res) {
 //login get
 async function getLogin(req, res) {
     try {
-        res.render('login', { user: req.user, title: 'Login'})
+        res.render('login', { user: req.user, title: 'Login' })
     } catch (err) {
         console.log(err)
         res.status(422).json({ err })
@@ -103,7 +103,7 @@ async function getLogout(req, res) {
     } catch (err) {
         console.log(err)
         res.status(406).json({ err })
-    }    
+    }
 }
 
 

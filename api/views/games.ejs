@@ -3,8 +3,6 @@
 
 <head>
     <%- include('partials/head'); -%>
-        <!-- favicon icon-->
-        <link rel="shortcut icon" href="/images/favicon.svg" type="img/svg+xml">
 
         <!--google font link-->
         <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -36,7 +34,7 @@
             <div class="habits content">
                 <% if (games.length > 0) { %> 
                     <% games.forEach(game => { %>
-                    <a href= "/games/<%= game.gameId %>"><h3 class="habit-title" id=<%= game.gameId %>><%= game.gameName %></h3></a>
+                    <a href= "/games/<%= game.gameId %>"><h3 class="habit-title text-center" id=<%= game.gameId %>><%= game.gameName %></h3></a>
                     <% }) %>
                     <%  %>
                  <% } else { %>

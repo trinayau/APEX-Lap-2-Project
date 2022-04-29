@@ -1,6 +1,7 @@
 const Schema = require('./Schema');
 const mongoose = require('mongoose');
 const Game = require('./Game');
+const Habit = require('./Habit');
 
 module.exports = class Habit {
     constructor() { }
@@ -34,7 +35,8 @@ module.exports = class Habit {
                 resolve(
                     {
                         habits: habits,
-                        title: game['gameName']
+                        title: game['gameName'],
+                        gameId: game['gameId']
                     });
             } catch (err) {
                 reject(`Habits with gameID: ${gameId} not found`);
