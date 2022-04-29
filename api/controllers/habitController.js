@@ -1,6 +1,5 @@
 const Habit = require('../models/Habit');
 const jwt = require('jsonwebtoken');
-const { User } = require('../models/Schema');
 
 async function getAllHabits(req, res) {
     try {
@@ -25,21 +24,26 @@ async function createHabit(req, res) {
     }
 }
 
-async function deleteHabit(req, res) {
+async function updateHabit(req, res) {
     try {
         const decodedToken = jwt.decode(req.headers['cookie'].split('=')[1]);
-        decodedToken.id //user id
-        //game id pass through
-        //habit id
-        const habitId = JSON.parse(req.body);
-        console.log(habitId.id);
-        const result = await Habit.delete(habitId.id);
-        console.log('result');
-        res.status(201).send('result');
+        const result = await Habit.updateHabit(decodedToken.id, req.params.id, req.body);
+        res.status(201).json(result);
     } catch (err) {
         console.log(err)
         res.status(422).json({ err })
     }
 }
 
-module.exports = {createHabit, deleteHabit, getAllHabits}
+async function deleteHabit(req, res) {
+    try {
+        const result = await Habit.delete(req.body, req.params.id);
+        res.status(201).send('Deleted');
+    } catch (err) {
+        console.log(err)
+        res.status(422).json({ err })
+    }
+}
+
+module.exports = {createHabit, deleteHabit, getAllHabits, updateHabit}
+
