@@ -27,7 +27,7 @@ async function createHabit(req, res) {
 async function updateHabit(req, res) {
     try {
         const decodedToken = jwt.decode(req.headers['cookie'].split('=')[1]);
-        const result = await Habit.updateHabit(decodedToken.id, req.params.id, req.body);
+        const result = await Habit.updateHabit(decodedToken.id, req.params.id, JSON.parse(req.body));
         res.status(201).json(result);
     } catch (err) {
         console.log(err)
@@ -37,7 +37,7 @@ async function updateHabit(req, res) {
 
 async function deleteHabit(req, res) {
     try {
-        const result = await Habit.delete(req.body, req.params.id);
+        const result = await Habit.delete(JSON.parse(req.body), req.params.id);
         res.status(201).send('Deleted');
     } catch (err) {
         console.log(err)

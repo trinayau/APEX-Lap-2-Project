@@ -51,8 +51,8 @@ module.exports = class Habit {
                     , { $unwind: '$games.habits' }
                     , { $match: { 'games.habits._id': mongoose.Types.ObjectId(data.habitId) } }
                 ])
-
-                console.log(result[0]['games']['habits'])
+                console.log(result)
+                // console.log(result[0]['games']['habits'])
 
                 if ((parseInt(data.habitChange) + result[0]['games']['habits']['habitReps']) <= result[0]['games']['habits']['habitMaxReps'] &&
                     (parseInt(data.habitChange) + result[0]['games']['habits']['habitReps']) >= 0) {
@@ -88,8 +88,9 @@ module.exports = class Habit {
     static async delete(data, gameId) {
         return new Promise(async (resolve, reject) => {
             try {
-                const deleted = await Schema.User.findOneAndUpdate({ 'games.habits._id': mongoose.Types.ObjectId(data.habitId) },
-                    { '$pull': { 'games.$[o].habits': { '_id': mongoose.Types.ObjectId(data.habitId) } } },
+                console.log([data])
+                const deleted = await Schema.User.findOneAndUpdate({ 'games.habits._id': mongoose.Types.ObjectId(data["habitId"]) },
+                    { '$pull': { 'games.$[o].habits': { '_id': mongoose.Types.ObjectId(data["habitId"]) } } },
                     { arrayFilters: [{ 'o.gameId': parseInt(gameId) }] })
                 console.log(deleted);
                 resolve(deleted);
