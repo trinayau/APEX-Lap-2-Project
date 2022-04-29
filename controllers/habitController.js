@@ -6,7 +6,7 @@ async function getAllHabits(req, res) {
         const decodedToken = jwt.decode(req.headers['cookie'].split('=')[1]);
         const habitsData = await Habit.getAllHabits(decodedToken.id, req.params.id);
         //habitsData: {habits: habits, title: game.gameName}
-        res.render('onlyHabit', {habits: habitsData.habits, title: habitsData.title});
+        res.render('habitPage', {habits: habitsData.habits, title: habitsData.title});
     } catch (err) {
         console.log(err)
         res.status(404).json({ err })
