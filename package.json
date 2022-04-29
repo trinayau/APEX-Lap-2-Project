@@ -1,5 +1,37 @@
 {
-  "dependencies": {
-    "axios": "^0.27.1"
-  }
+    "description": "LAP 2 debug assignment",
+    "scripts": {
+        "start": "node index.js",
+        "dev": "nodemon --legacy-watch",
+        "test": "jest tests --watchAll --detectOpenHandles --runInBand --verbose",
+        "unitTests": "jest --testPathPattern=/unit/ --watchAll --verbose",
+        "coverage": "jest --testPathPattern=/unit/ --coverage"
+    },
+    "jest": {
+        "testEnvironment": "node",
+        "coveragePathIgnorePatterns": [
+            "/node_modules/"
+        ]
+    },
+    "author": "Apex Gaming",
+    "license": "ISC",
+    "devDependencies": {
+        "jest": "^26.4.2",
+        "nodemon": "^2.0.4",
+        "supertest": "^4.0.2"
+    },
+    "dependencies": {
+        "axios": "^0.27.1",
+        "bcrypt": "^5.0.1",
+        "body-parser": "^1.20.0",
+        "cookie-parser": "^1.4.6",
+        "cors": "^2.8.5",
+        "ejs": "^3.1.7",
+        "express": "^4.17.1",
+        "jsonwebtoken": "^8.5.1",
+        "mongoose": "^6.3.1",
+        "mongoose-unique-validator": "^3.0.0",
+        "path": "^0.12.7",
+        "validator": "^13.7.0"
+    }
 }

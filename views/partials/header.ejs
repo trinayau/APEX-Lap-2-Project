@@ -1,0 +1,120 @@
+<div class="overlay" data-overlay></div>
+    
+<div class="container">
+
+  <a href="/" class="logo" style="display: flex">
+    <span>
+      <ion-icon name="finger-print-outline" style="font-size: 50px; color: white"></ion-icon>
+  </span><span class="h2">APEX.IO</span>
+  </a>
+
+  <button class="nav-open-btn" data-nav-open-btn>
+    <ion-icon name="menu-outline"></ion-icon>
+  </button>
+
+  <nav class="navbar" data-nav>
+
+    <div class="navbar-top">
+
+      <a href="/" class="logo" style="display: flex">
+        <ion-icon name="finger-print-outline" style="font-size: 50px; color: white"></ion-icon>
+        <span class="h2">APEX.IO</span>
+      </a>
+
+      <button class="nav-close-btn" data-nav-close-btn>
+        <ion-icon name="close-outline"></ion-icon>
+      </button>
+
+    </div>
+
+    <ul class="navbar-list">
+
+      <li>
+        <a href="/" class="navbar-link">Home</a>
+      </li>
+
+      <li>
+        <a href="/#about" class="navbar-link">About</a>
+      </li>
+
+      <li>
+        <a href="/#tournament" class="navbar-link">Tournament</a>
+      </li>
+
+      <li>
+        <a href="/#team" class="navbar-link">Team</a>
+      </li>
+
+      <li>
+        <a href="/#contact" class="navbar-link">Contact</a>
+      </li>
+
+    </ul>
+
+    <ul class="nav-social-list">
+
+      <li>
+        <a href="#" class="social-link">
+          <ion-icon name="logo-twitter"></ion-icon>
+        </a>
+      </li>
+
+      <li>
+        <a href="#" class="social-link">
+          <ion-icon name="logo-instagram"></ion-icon>
+        </a>
+      </li>
+
+      <li>
+        <a href="#" class="social-link">
+          <ion-icon name="logo-github"></ion-icon>
+        </a>
+      </li>
+
+      <li>
+        <a href="#" class="social-link">
+          <ion-icon name="logo-youtube"></ion-icon>
+        </a>
+      </li>
+
+    </ul>
+
+  </nav>
+
+  <div class="header-actions">
+    
+    <% if (user) { %>
+      <li class="navbar-link" style="color:#03AABD; padding-right: 50px;"><a href="/gamePage">Welcome: <%= user.username %></a></li>
+      <a class="btn-sign_in" href="/logout">
+  
+        <div class="icon-box">
+          <ion-icon name="log-in-outline"></ion-icon>
+        </div>
+
+        <span>Logout</span>
+
+      </a>
+    <% } else { %>
+      <a class="btn-sign_in" href="/login">
+
+        <div class="icon-box">
+          <ion-icon name="log-in-outline"></ion-icon>
+        </div>
+  
+        <span>Log-in</span>
+  
+      </a>
+      <a class="btn-sign_in" href="/signup">
+  
+          <div class="icon-box">
+            <ion-icon name="log-in-outline"></ion-icon>
+          </div>
+  
+          <span>Register</span>
+  
+        </a>
+    <% } %>
+
+  </div>
+
+</div>
