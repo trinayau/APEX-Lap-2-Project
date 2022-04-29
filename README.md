@@ -37,14 +37,12 @@ Installation is not required as this app has been deployed. However, prior to de
 ## Usage
 
 This current release of the project has our server-side running on Heroku and client-side running on netlify. 
-  - Server - https://penguin-journa1s.herokuapp.com/
-  - Client - https://penguin-journals.netlify.app/
+  - Server and Client: https://apex-lap2-project.herokuapp.com/
 
 If you wish to run the application locally, please follow the following: 
-- Update client/index.js API to http://localhost:3000/journal and save 
-- cd to the server folder in your terminal & run npm start to launch the server
-- Navigate to the client folder and open the index.html file in your browser to see the application UI
-
+- Clone
+- Go to http://localhost:3000/
+- cd to root folder in your terminal & run npm start to launch the server
 ---
 
 # Technologies 
@@ -91,16 +89,17 @@ Organising and planning
 # Wins & Challenges
 
 ## Wins
-
-
+- The server works
+- We all learned EJS and MongoDB
 
 ## Challenges
-
+- Testing
+- JSON syntax
 
 ---
 
 # Bugs (that still exist)
-
+- None
 
 
 ---
