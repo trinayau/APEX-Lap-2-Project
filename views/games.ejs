@@ -3,6 +3,7 @@
 
 <head>
     <%- include('partials/head'); -%>
+    <script src="https://kit.fontawesome.com/592efcffa0.js" crossorigin="anonymous"></script>
 
         <!--google font link-->
         <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -48,7 +49,16 @@
     </div>
         <div class="game-cards" id="gameDiv" style="display: none">
         <h1 class="h2 habit-header">SELECT YOUR GAME!</h1>
+        <div class="searchcontainer">
+            <div class="search-box">
+               <input type="text" class="search-input" placeholder="Search..">
+               <button class="search-button">
+                 <i class="fas fa-search"></i>
+               </button>
+            </div>
+         </div>
         <div class="row">
+            
             <div class="col-md-4">
                 <div class="column">
                     <div class="card text-center">
@@ -92,9 +102,11 @@
                     </div>
                 </div>
             </div>
+          
         </div>
+       
     </div>
-    
+  
     </div>
     <!-- <script defer src="/js/habits.js"></script> -->
     <!--Custom JS-->
