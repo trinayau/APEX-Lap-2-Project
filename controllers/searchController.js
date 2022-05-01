@@ -2,7 +2,7 @@ const axios = require('axios');
 
 async function searchGames(req, res) {
     try {
-        const search = JSON.parse(req.body.query);
+        const search = JSON.parse(req.body);
         console.log(search);
         axios.post('https://api.igdb.com/v4/games', `search "${search}"; fields name,cover.url; limit 5;`, {
             headers: {
@@ -11,6 +11,7 @@ async function searchGames(req, res) {
             }
         })
             .then(resp => {
+                console.log(resp.data)
                 res.json(resp.data)
             })
             .catch(err => console.log(err))
