@@ -80,15 +80,15 @@ Design planning
 - Front end team drew up Figma wireframe
 
 Organising and planning 
-- Assigned a few tickets to each team memeber 
-- Planned regular catch up sessions each day (morning, afternoon, evening) to see how everyone is doing and if we need to re-align/re-distribute work 
+- Shared screen on Slack and worked together using pair programming and mob programming
+- Daily standup with team and engineering trainers
 
 ---
 
 # Wins & Challenges
 
 ## Wins
-- The server works
+- Deployed final project on Heroku: https://apex-io.herokuapp.com/
 - We all learned EJS and MongoDB
 
 ## Challenges
@@ -98,9 +98,7 @@ Organising and planning
 ---
 
 # Bugs (that still exist)
-- None
-
-
+- Registering with a duplicate username/email crashes Heroku server
 ---
 # Final
 ![Final Apex.io website](/public/images/final.png)
