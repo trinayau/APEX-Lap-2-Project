@@ -44,8 +44,7 @@ app.get('/habitPage', requireAuth, (req, res) => {
         })
     
 });
-//when u access /games/id, search for username/games/id and res.render('habitPage', games: result, title: result.gameName)
-//change 
+
 
 app.post('/habits', (req, res) => {
     const habit = new Habit(req.body);

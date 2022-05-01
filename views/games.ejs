@@ -3,6 +3,7 @@
 
 <head>
     <%- include('partials/head'); -%>
+    <script src="https://kit.fontawesome.com/592efcffa0.js" crossorigin="anonymous"></script>
 
         <!--google font link-->
         <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -48,7 +49,26 @@
     </div>
         <div class="game-cards" id="gameDiv" style="display: none">
         <h1 class="h2 habit-header">SELECT YOUR GAME!</h1>
+        <div class="container" id="searchDiv">
+            <div class="row height d-flex justify-content-center align-items-center">
+                <div class="col-md-6">
+                    <div class="form"> 
+                        <i class="fa fa-search"></i> 
+                        <form>
+                        <input type="text" class="form-control form-input" id="gameInput" placeholder="Search for a game..." required> <span class="left-pan">
+                            <button class="btn" id="searchBtn"style="background-color: none;">Search</button></span>
+                        
+                        </div>
+                        <div class="results" id="resultDiv">
+                            
+                        </div>
+                        <button type="submit" class="btn btn-primary">Add selected game</button>
+                    </form>
+                </div>
+            </div>
+        </div>
         <div class="row">
+            
             <div class="col-md-4">
                 <div class="column">
                     <div class="card text-center">
@@ -92,13 +112,15 @@
                     </div>
                 </div>
             </div>
+          
         </div>
+       
     </div>
-    
+  
     </div>
     <!-- <script defer src="/js/habits.js"></script> -->
     <!--Custom JS-->
-    <script src="js/layout/games.js"></script>
+    <script defer src="js/layout/games.js"></script>
     <!--ionicon link-->
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>

@@ -14,7 +14,7 @@ async function getAll(req, res) {
 async function createGame(req, res) {
     try {
         const decodedToken = jwt.decode(req.headers['cookie'].split('=')[1]);
-        await Game.create(decodedToken.id, req.body)
+        await Game.create(decodedToken.id, JSON.parse(req.body))
         res.status(201).json({ game: req.body.gameName });
     } catch (err) {
         console.log(err)
