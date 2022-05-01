@@ -71,7 +71,7 @@ try {
       body: JSON.stringify(newGame)
   }
   const r = await fetch(`${window.location.origin}/games`, options)
-//   window.location.reload()
+  window.location.reload()
     } catch (err) {
   console.log(err)
     }
