@@ -4,7 +4,7 @@
 Gebru Lap 1 Project Team Apex:
 - Trina Yau
 - Alfie Kelly
-- Michael Harkins
+- Michael Harkins-Meloy
 - Dan Willis
 
 
