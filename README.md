@@ -46,9 +46,11 @@ If you wish to run the application locally, please follow the following:
   - Cors
   - Jest 
   - Supertest
-  - ejs
+  - EJS
   - Axios
   - Mongoose
+  - Json Web Token
+  - Bcrypt
 - MongoDB/MongoDB Atlas
 ---
 
