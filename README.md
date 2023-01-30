@@ -1,5 +1,6 @@
 # APEX - Lap 2 project
 ## A habit tracking app for E-Sport Athletes
+Deployed on Render: https://apex-api-rqhf.onrender.com/
 
 Gebru Lap 1 Project Team Penguins:
 - Trina Yau
@@ -7,12 +8,8 @@ Gebru Lap 1 Project Team Penguins:
 - Michael Harkins
 - Dan Willis
 
-
-
 ## Description 
-
-
-
+Habit tracking app for serious pro gamers built with Node.js, EJS, MongoDB Atlas.
 
 ---
 
@@ -37,7 +34,7 @@ Installation is not required as this app has been deployed. However, prior to de
 ## Usage
 
 This current release of the project has our server-side running on Heroku and client-side running on netlify. 
-  - Server and Client: https://apex-lap2-project.herokuapp.com/
+  - Server and Client: https://apex-api-rqhf.onrender.com/
 
 If you wish to run the application locally, please follow the following: 
 - Clone
@@ -100,11 +97,6 @@ Organising and planning
 
 # Bugs (that still exist)
 - None
-
-
----
-
-
 
 ---
 
