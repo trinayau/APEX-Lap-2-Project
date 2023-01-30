@@ -2,14 +2,16 @@
 ## A habit tracking app for E-Sport Athletes
 Deployed on Render: https://apex-api-rqhf.onrender.com/
 
-Gebru Lap 1 Project Team Penguins:
+Gebru Lap 1 Project Team Apex:
 - Trina Yau
 - Alfie Kelly
-- Michael Harkins
+- Michael Harkins-Meloy
 - Dan Willis
 
 ## Description 
-Habit tracking app for serious pro gamers built with Node.js, EJS, MongoDB Atlas.
+
+
+A habit tracking website for training E-Sports athletes, keeping track of tasks for individual games.
 
 ---
 
@@ -20,16 +22,8 @@ Habit tracking app for serious pro gamers built with Node.js, EJS, MongoDB Atlas
 Installation is not required as this app has been deployed. However, prior to deployement, installation instructions consisted of:
 
 - Clone or download the repo
-- cd into the Lap1Project/server folder in your terminal 
-- Run all dependencies
-  - npm
-  - nodemon
-  - supertest
-  - express
-  - cors
-  - jest
-  - Docker
-  - EJS
+- cd into the Apex-Lap-2-Project folder in your terminal 
+- You can either run `npm install` and `npm start` or `docker compose up` depending on whether you would like to use a local MongoDB or one hosted on the cloud service MongoDB Atlas
 
 ## Usage
 
@@ -37,9 +31,8 @@ This current release of the project has our server-side running on Heroku and cl
   - Server and Client: https://apex-api-rqhf.onrender.com/
 
 If you wish to run the application locally, please follow the following: 
-- Clone
+- Clone/install and start server
 - Go to http://localhost:3000/
-- cd to root folder in your terminal & run npm start to launch the server
 ---
 
 # Technologies 
@@ -52,51 +45,61 @@ If you wish to run the application locally, please follow the following:
   - Cors
   - Jest 
   - Supertest
-  - ejs
+  - EJS
+  - Axios
+  - Mongoose
+  - Json Web Token
+  - Bcrypt
+- MongoDB/MongoDB Atlas
 ---
 
 # Process
 
 [How did you go about creating this project]
 
-Agreed on our way of working 
-- Agreed on a single method of communication about this project (slack)
-- Agreed on what branches we will work in and will only merge in main after communicating to the rest of the team via slack 
-- Agreed where our single point of truth for this application will be stored (Figma) 
-- Agreed a rough plan of how we intend the week to go 
+Initial planning
+- Discussed roles - front end vs back end tasks
+- Agreed on MongoDB
+- 
 
 Understanding the problem 
-- Tried to understand the core need for the application and wrote this in a single sentence
+- Visualised our target demographic and our user story
 
-Defining and refining  
-- Defined the core requirements of the application and added each requirement as tickets in a kanban board  
-- Went through each ticket as a team to ensure we are all aligned with the requirments and how we indend to tackle the ticket 
+Project planning
+- Created issues in Github Projects Kanban board
+- Discussed timelines and blockers in daily standup
 
 Design planning 
-- Found a few examples of similar journalling websites and took full screenshots of them 
-- Using Figma, as a team we went through each of these example screenshots and discussed what we liked and disliked about thier design 
-- Then as a team we drew a LoFi wireframe of our application 
+- As a group, looked at gaming websites such as Razer.com
+- Analysed aspects we liked from the website and discussed on Figma
+- Front end team drew up Figma wireframe
 
 Organising and planning 
-- Assigned a few tickets to each team memeber 
-- Planned regular catch up sessions each day (morning, afternoon, evening) to see how everyone is doing and if we need to re-align/re-distribute work 
+- Shared screen on Slack and worked together using pair programming and mob programming
+- Daily standup with team and engineering trainers
 
 ---
 
 # Wins & Challenges
 
 ## Wins
-- The server works
+- Deployed final project on Heroku: https://apex-io.herokuapp.com/
 - We all learned EJS and MongoDB
 
 ## Challenges
 - Testing
 - JSON syntax
+- MongoDB queries
 
 ---
 
 # Bugs (that still exist)
+
 - None
+
+---
+# Final
+![Final Apex.io website](/public/images/final.png)
 
 ---
 
@@ -104,4 +107,4 @@ Organising and planning
 
 - MIT Licence 
 
-Copyright 2022
+Copyright 2023
